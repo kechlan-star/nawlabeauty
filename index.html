@@ -393,7 +393,16 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;back
 }
 @media(max-width:560px){
   .hero-title{font-size:clamp(2.4rem,11vw,3.2rem)}
-  .prod-grid{grid-template-columns:1fr}
+  .prod-grid{grid-template-columns:1fr 1fr;gap:0.8rem}
+  .prod-img-wrap{height:160px}
+  .prod-info{padding:0.85rem}
+  .prod-brand{font-size:0.5rem;letter-spacing:0.18em;margin-bottom:0.3rem}
+  .prod-name{font-size:0.92rem;margin-bottom:0.4rem}
+  .prod-desc{font-size:0.66rem;line-height:1.55;margin-bottom:0.8rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .prod-card .prod-footer{flex-direction:column;align-items:stretch;gap:0.5rem}
+  html[lang="ar"] .prod-card .prod-footer{flex-direction:column}
+  .prod-price{font-size:1.05rem;text-align:center}
+  .prod-buy{width:100%;padding:0.55rem 0.6rem;font-size:0.56rem;letter-spacing:0.1em}
   .stat-grid{grid-template-columns:1fr 1fr}
   .hair-card{grid-template-columns:1fr}
   .hair-img{width:100%;height:210px;min-height:0}
@@ -795,7 +804,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Beauty of Joseon</div>
     <div class="prod-name">Ground Rice and Honey Glow Mask</div>
-    <div class="prod-desc">Rice Lees + Honey + Kaolin + Rice Hull Powder. An all-in-one mask that brightens, hydrates and gently exfoliates for radiant, smooth skin.</div>
+    <div class="prod-desc">Rice Lees + Honey + Kaolin. A wash-off glow mask that gently exfoliates, deeply nourishes and brightens. Use 1–2 times a week for 10–15 minutes. 150ml.</div>
     <div class="prod-footer">
       <div class="prod-price">270 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Beauty of Joseon Ground Rice and Honey Glow Mask','270')">Buy Now</button>
@@ -814,7 +823,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Beauty of Joseon</div>
     <div class="prod-name">Relief Sun: Rice + Probiotics SPF50+</div>
-    <div class="prod-desc">SPF50+ PA++++. 30% Rice grain extract + Probiotics + Niacinamide. Reduces UV damage, improves pores and protects the skin barrier. 50ml.</div>
+    <div class="prod-desc">SPF50+ PA++++. 30% Rice extract + Probiotics + Niacinamide. Lightweight, fast-absorbing, no white cast — protects the barrier and improves pores. 50ml.</div>
     <div class="prod-footer">
       <div class="prod-price">240 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Beauty of Joseon Relief Sun SPF50+','240')">Buy Now</button>
@@ -834,7 +843,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Anua</div>
     <div class="prod-name">Niacinamide 10% + TXA 4% Serum</div>
-    <div class="prod-desc">Niacinamide 10% + Tranexamic Acid 4% + Alpha Arbutin 2% + Hyaluronic Acid. Targets dark spots, evens skin tone and deeply hydrates. 30ml.</div>
+    <div class="prod-desc">Niacinamide 10% + Tranexamic Acid 4% + Alpha Arbutin 2%. Fades dark spots, evens tone and regulates sebum. Fragrance-free — suits sensitive skin. 30ml.</div>
     <div class="prod-footer">
       <div class="prod-price">270 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Anua Niacinamide 10% + TXA 4% Serum','270')">Buy Now</button>
@@ -871,7 +880,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Anua</div>
     <div class="prod-name">Heartleaf Pore Deep Cleansing Foam</div>
-    <div class="prod-desc">Heartleaf + BHA. Deep pore cleansing that removes impurities and excess sebum with a non-drying finish. For all skin types. 150ml.</div>
+    <div class="prod-desc">Heartleaf + Quercetinol + BHA. Deep pore cleansing that clears excess sebum and refines pores without drying. For sensitive and acne-prone skin. 150ml.</div>
     <div class="prod-footer">
       <div class="prod-price">210 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Anua Heartleaf Pore Deep Cleansing Foam','210')">Buy Now</button>
@@ -891,7 +900,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Eqqualberry</div>
     <div class="prod-name">Bakuchiol Plumping Serum</div>
-    <div class="prod-desc">99% Pure Bakuchiol 5,000ppm. A natural retinol alternative — anti-aging, minimizes pores, safe for sensitive skin. 30ml.</div>
+    <div class="prod-desc">99% Pure Bakuchiol 5,000ppm. A plant-based retinol alternative that plumps, firms and hydrates for 24 hours. Gentle on sensitive skin. 30ml.</div>
     <div class="prod-footer">
       <div class="prod-price">310 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Eqqualberry Bakuchiol Plumping Serum','310')">Buy Now</button>
@@ -910,7 +919,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Dr.Althea</div>
     <div class="prod-name">Vitamin C Boosting Serum</div>
-    <div class="prod-desc">63% Hippophae Rhamnoides Water. Lightweight Vitamin C serum for clear, radiant and even skin tone. 30ml.</div>
+    <div class="prod-desc">63% Hippophae Rhamnoides Water + Vitamin C. Brightens, fades dark spots and shields against free radicals — gentle even on sensitive skin. 30ml.</div>
     <div class="prod-footer">
       <div class="prod-price">280 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Dr.Althea Vitamin C Boosting Serum','280')">Buy Now</button>
@@ -922,7 +931,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
       <div class="prod-info">
         <div class="prod-brand">Beauty of Joseon</div>
         <div class="prod-name">Ginseng Essence Water</div>
-        <div class="prod-desc">Traditional Korean ginseng-rich essence water that brightens, plumps and revives dull skin.</div>
+        <div class="prod-desc">Traditional Korean ginseng essence that revives dull skin, rebalances water and oil, and strengthens the barrier for lasting hydration. 150ml.</div>
         <div class="prod-footer">
           <div class="prod-price">285 DHS</div>
           <button class="prod-buy" onclick="event.stopPropagation();openPayment('Ginseng Essence Water','285')" data-i18n="buy_btn">Buy Now</button>
@@ -946,7 +955,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
       <div class="prod-info">
         <div class="prod-brand">Celimax</div>
         <div class="prod-name">Retinol Shot Tightening Serum</div>
-        <div class="prod-desc">Retinol 0.1% + 9 Peptide Complex + Panthenol 1%. Visibly firms from first use.</div>
+        <div class="prod-desc">Encapsulated Retinol 0.1% + 9 Peptide Complex + Panthenol 1%. Firms, refines texture and pores. Start with 2–3 evenings a week. 30ml.</div>
         <div class="prod-footer">
           <div class="prod-price">280 DHS</div>
           <button class="prod-buy" onclick="event.stopPropagation();openPayment('Retinol Shot Tightening Serum','280')" data-i18n="buy_btn">Buy Now</button>
@@ -958,7 +967,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
       <div class="prod-info">
         <div class="prod-brand">Celimax</div>
         <div class="prod-name">Noni Energy Ampoule 30ml</div>
-        <div class="prod-desc">Pure noni extract in a concentrated ampoule. Energises tired skin for a lasting dewy glow.</div>
+        <div class="prod-desc">Concentrated noni ampoule — antioxidant and soothing. Strengthens the barrier, calms redness and restores radiance. For all skin types. 30ml.</div>
         <div class="prod-footer">
           <div class="prod-price">280 DHS</div>
           <button class="prod-buy" onclick="event.stopPropagation();openPayment('Noni Energy Ampoule 30ml','280')" data-i18n="buy_btn">Buy Now</button>
@@ -1002,7 +1011,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Dr.Althea</div>
     <div class="prod-name">345 Relief Cream</div>
-    <div class="prod-desc">Niacinamide + Centella Asiatica + Ceramide NP. Soothing, hydrating relief cream that calms redness and strengthens the skin barrier. For all skin types. 50ml.</div>
+    <div class="prod-desc">The 3·4·5 formula: 3 Centella extracts + 4 soothing agents + 5 ceramides. Calms redness, locks in moisture and rebuilds the skin barrier. 50ml.</div>
     <div class="prod-footer">
       <div class="prod-price">290 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Dr.Althea 345 Relief Cream','290')">Buy Now</button>
@@ -1021,7 +1030,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="prod-info">
     <div class="prod-brand">Celimax</div>
     <div class="prod-name">Retinal Shot Tightening Booster</div>
-    <div class="prod-desc">Retinal 0.1% + MATRIXYL® 3000 3% + Panthenol 1%. High-performance elasticity booster that visibly firms and tightens skin from first use. 20ml.</div>
+    <div class="prod-desc">Nano Retinal 0.1% + MATRIXYL® 3000 3% + Panthenol 1%. High-performance firming booster — use in the evening with SPF the next morning. 15ml.</div>
     <div class="prod-footer">
       <div class="prod-price">260 DHS</div>
       <button class="prod-buy" data-i18n="buy_btn" onclick="event.stopPropagation();openPayment('Celimax Retinal Shot Tightening Booster','260')">Buy Now</button>
@@ -1879,19 +1888,19 @@ const TX = {
   "Anti-Pelliculaire DS Anti-Dandruff Shampoo":{ar:"شامبو ديركوس DS ضد القشرة",fr:"Shampooing Antipelliculaire DS"},
   "Dr.33 Hair Ampoule+ — Scalpy":{ar:"أمبولة الشعر Dr.33 — سكالبي",fr:"Ampoule Capillaire Dr.33 — Scalpy"},
   // ── Skincare descriptions ──
-  "Rice Lees + Honey + Kaolin + Rice Hull Powder. An all-in-one mask that brightens, hydrates and gently exfoliates for radiant, smooth skin.":{ar:"خميرة الأرز + العسل + الكاولين + مسحوق قشور الأرز. قناعٌ متكامل يُضيء البشرة ويُرطّبها ويُقشّرها بلطف لتنعمي ببشرةٍ مشرقة وناعمة.",fr:"Lie de riz + Miel + Kaolin + Poudre de balle de riz. Un masque tout-en-un qui illumine, hydrate et exfolie en douceur pour une peau radieuse et lisse."},
-  "SPF50+ PA++++. 30% Rice grain extract + Probiotics + Niacinamide. Reduces UV damage, improves pores and protects the skin barrier. 50ml.":{ar:"SPF50+ PA++++. ‏30% خلاصة حبوب الأرز + بروبيوتيك + نياسيناميد. يُقلّل أضرار الأشعة فوق البنفسجية ويُحسّن المسام ويحمي حاجز البشرة. 50مل.",fr:"SPF50+ PA++++. 30% d'extrait de grain de riz + Probiotiques + Niacinamide. Réduit les dommages UV, affine les pores et protège la barrière cutanée. 50ml."},
-  "Niacinamide 10% + Tranexamic Acid 4% + Alpha Arbutin 2% + Hyaluronic Acid. Targets dark spots, evens skin tone and deeply hydrates. 30ml.":{ar:"نياسيناميد 10% + حمض الترانيكساميك 4% + ألفا أربوتين 2% + حمض الهيالورونيك. يستهدف البقع الداكنة ويُوحّد لون البشرة ويُرطّبها بعمق. 30مل.",fr:"Niacinamide 10% + Acide Tranexamique 4% + Alpha-Arbutine 2% + Acide Hyaluronique. Cible les taches brunes, unifie le teint et hydrate en profondeur. 30ml."},
+  "Rice Lees + Honey + Kaolin. A wash-off glow mask that gently exfoliates, deeply nourishes and brightens. Use 1–2 times a week for 10–15 minutes. 150ml.":{ar:"خميرة الأرز + العسل + الكاولين. قناعٌ يُقشّر بلطف ويُغذّي بعمق ويمنح البشرة إشراقة. يُستعمل مرة إلى مرتين أسبوعياً لمدة 10–15 دقيقة. 150مل.",fr:"Lie de riz + Miel + Kaolin. Masque éclat qui exfolie en douceur, nourrit en profondeur et illumine. 1 à 2 fois par semaine, 10–15 minutes. 150ml."},
+  "SPF50+ PA++++. 30% Rice extract + Probiotics + Niacinamide. Lightweight, fast-absorbing, no white cast — protects the barrier and improves pores. 50ml.":{ar:"SPF50+ PA++++. ‏30% خلاصة الأرز + بروبيوتيك + نياسيناميد. خفيفٌ سريع الامتصاص ولا يترك أثراً أبيض — يحمي حاجز البشرة ويُحسّن المسام. 50مل.",fr:"SPF50+ PA++++. 30% d'extrait de riz + Probiotiques + Niacinamide. Léger, absorption rapide, sans traces blanches — protège la barrière et affine les pores. 50ml."},
+  "Niacinamide 10% + Tranexamic Acid 4% + Alpha Arbutin 2%. Fades dark spots, evens tone and regulates sebum. Fragrance-free — suits sensitive skin. 30ml.":{ar:"نياسيناميد 10% + حمض الترانيكساميك 4% + ألفا أربوتين 2%. يُخفّف البقع الداكنة ويوحّد اللون وينظّم إفراز الدهون. خالٍ من العطور — مناسبٌ للبشرة الحساسة. 30مل.",fr:"Niacinamide 10% + Acide Tranexamique 4% + Alpha-Arbutine 2%. Atténue les taches, unifie le teint et régule le sébum. Sans parfum — idéal peaux sensibles. 30ml."},
   "Panthenol 5% + Madecassoside + Tribioma. Ultra-repairing soothing balm. -90% pain & itching after first use. For irritated skin. 100ml.":{ar:"بانثينول 5% + ماديكاسوسايد + تريبيوما. بلسمٌ مُهدّئ فائق الإصلاح. يُخفّف الألم والحكة بنسبة 90% بعد أول استعمال. للبشرة المتهيّجة. 100مل.",fr:"Panthénol 5% + Madécassoside + Tribioma. Baume apaisant ultra-réparateur. -90% de douleur et démangeaisons dès la première utilisation. Pour peaux irritées. 100ml."},
-  "Heartleaf + BHA. Deep pore cleansing that removes impurities and excess sebum with a non-drying finish. For all skin types. 150ml.":{ar:"هارتليف + BHA. تنظيفٌ عميق للمسام يُزيل الشوائب والدهون الزائدة دون أن يُجفّف البشرة. لجميع أنواع البشرة. 150مل.",fr:"Heartleaf + BHA. Nettoyage profond des pores qui élimine impuretés et excès de sébum sans dessécher. Tous types de peau. 150ml."},
-  "Niacinamide + Centella Asiatica + Ceramide NP. Soothing, hydrating relief cream that calms redness and strengthens the skin barrier. For all skin types. 50ml.":{ar:"نياسيناميد + سنتيلا آسياتيكا + سيراميد NP. كريمٌ مُلطِّف ومُرطِّب يهدّئ الاحمرار ويُقوّي حاجز البشرة. لجميع أنواع البشرة. 50مل.",fr:"Niacinamide + Centella Asiatica + Céramide NP. Crème apaisante et hydratante qui calme les rougeurs et renforce la barrière cutanée. Pour tous types de peau. 50ml."},
-  "Retinal 0.1% + MATRIXYL® 3000 3% + Panthenol 1%. High-performance elasticity booster that visibly firms and tightens skin from first use. 20ml.":{ar:"ريتينال 0.1% + ماتريكسيل® 3000 بنسبة 3% + بانثينول 1%. بوسترٌ عالي الفعالية لمرونة البشرة، يشدّها ويُحكِم ملمسها من أول استخدام. 20مل.",fr:"Rétinal 0,1% + MATRIXYL® 3000 3% + Panthénol 1%. Booster d'élasticité haute performance qui raffermit et resserre visiblement la peau dès la première utilisation. 20ml."},
-  "99% Pure Bakuchiol 5,000ppm. A natural retinol alternative — anti-aging, minimizes pores, safe for sensitive skin. 30ml.":{ar:"باكوتشيول نقي 99% بتركيز 5,000ppm. بديلٌ طبيعي للريتينول — يُكافح علامات التقدّم في السن ويُصغّر المسام، وآمنٌ للبشرة الحساسة. 30مل.",fr:"Bakuchiol pur à 99% — 5 000 ppm. Alternative naturelle au rétinol — anti-âge, resserre les pores, sûr pour peaux sensibles. 30ml."},
-  "63% Hippophae Rhamnoides Water. Lightweight Vitamin C serum for clear, radiant and even skin tone. 30ml.":{ar:"63% ماء نبات النَّبق البحري. سيروم فيتامين C خفيف لبشرةٍ صافية ومشرقة وموحّدة اللون. 30مل.",fr:"63% d'eau d'argousier. Sérum léger à la Vitamine C pour un teint clair, radieux et uniforme. 30ml."},
-  "Traditional Korean ginseng-rich essence water that brightens, plumps and revives dull skin.":{ar:"ماء إسنس كوري تقليدي غنيٌّ بالجينسنغ يُضيء البشرة ويمنحها امتلاءً ويُعيد الحيوية للبشرة الباهتة.",fr:"Eau d'essence coréenne traditionnelle riche en ginseng qui illumine, repulpe et revitalise les peaux ternes."},
+  "Heartleaf + Quercetinol + BHA. Deep pore cleansing that clears excess sebum and refines pores without drying. For sensitive and acne-prone skin. 150ml.":{ar:"هارتليف + كيرسيتينول + BHA. تنظيفٌ عميق للمسام يُزيل الدهون الزائدة ويُنقّي المسام دون جفاف. للبشرة الحساسة والمعرّضة للحبوب. 150مل.",fr:"Heartleaf + Quercétinol + BHA. Nettoyage profond qui élimine l'excès de sébum et resserre les pores sans dessécher. Peaux sensibles et à imperfections. 150ml."},
+  "The 3·4·5 formula: 3 Centella extracts + 4 soothing agents + 5 ceramides. Calms redness, locks in moisture and rebuilds the skin barrier. 50ml.":{ar:"تركيبة 3·4·5: ‏3 خلاصات سنتيلا + 4 مكوّنات مهدّئة + 5 سيراميدات. يُهدّئ الاحمرار ويحبس الترطيب ويُعيد بناء حاجز البشرة. 50مل.",fr:"La formule 3·4·5 : 3 extraits de centella + 4 agents apaisants + 5 céramides. Calme les rougeurs, retient l'hydratation et répare la barrière cutanée. 50ml."},
+  "Nano Retinal 0.1% + MATRIXYL® 3000 3% + Panthenol 1%. High-performance firming booster — use in the evening with SPF the next morning. 15ml.":{ar:"ريتينال نانو 0.1% + ماتريكسيل® 3000 بنسبة 3% + بانثينول 1%. بوستر شدٍّ عالي الفعالية — يُستعمل مساءً مع واقي شمس صباح اليوم التالي. 15مل.",fr:"Rétinal nano 0,1% + MATRIXYL® 3000 3% + Panthénol 1%. Booster raffermissant haute performance — le soir, avec SPF le lendemain matin. 15ml."},
+  "99% Pure Bakuchiol 5,000ppm. A plant-based retinol alternative that plumps, firms and hydrates for 24 hours. Gentle on sensitive skin. 30ml.":{ar:"باكوتشيول نقي 99% بتركيز 5,000ppm. بديلٌ نباتي للريتينول يمنح البشرة امتلاءً وشدّاً وترطيباً يدوم 24 ساعة. لطيفٌ على البشرة الحساسة. 30مل.",fr:"Bakuchiol pur à 99% — 5 000 ppm. Alternative végétale au rétinol qui repulpe, raffermit et hydrate 24h. Doux pour les peaux sensibles. 30ml."},
+  "63% Hippophae Rhamnoides Water + Vitamin C. Brightens, fades dark spots and shields against free radicals — gentle even on sensitive skin. 30ml.":{ar:"‏63% ماء النَّبق البحري + فيتامين C. يُفتّح البشرة ويُخفّف البقع الداكنة ويحميها من الجذور الحرة — لطيفٌ حتى على البشرة الحساسة. 30مل.",fr:"63% d'eau d'argousier + Vitamine C. Illumine, atténue les taches brunes et protège des radicaux libres — doux même pour les peaux sensibles. 30ml."},
+  "Traditional Korean ginseng essence that revives dull skin, rebalances water and oil, and strengthens the barrier for lasting hydration. 150ml.":{ar:"ماء إسنس كوري تقليدي بالجينسنغ يُعيد الحيوية للبشرة الباهتة، يوازن الماء والدهون ويقوّي حاجز البشرة بترطيبٍ يدوم. 150مل.",fr:"Essence coréenne au ginseng qui ravive les peaux ternes, rééquilibre eau et sébum et renforce la barrière pour une hydratation durable. 150ml."},
   "Repairs the skin barrier, fades blemishes, and restores a luminous healthy glow.":{ar:"يُصلح حاجز البشرة ويُخفّف الشوائب ويُعيد للبشرة إشراقتها الصحية المتألّقة.",fr:"Répare la barrière cutanée, atténue les imperfections et restaure un éclat sain et lumineux."},
-  "Retinol 0.1% + 9 Peptide Complex + Panthenol 1%. Visibly firms from first use.":{ar:"ريتينول 0.1% + مركّب 9 ببتيدات + بانثينول 1%. يشدّ البشرة بشكلٍ مرئي من أول استعمال.",fr:"Rétinol 0,1% + Complexe 9 Peptides + Panthénol 1%. Raffermit visiblement dès la première utilisation."},
-  "Pure noni extract in a concentrated ampoule. Energises tired skin for a lasting dewy glow.":{ar:"خلاصة نوني نقية في أمبولةٍ مركّزة. تمنح البشرة المُتعبة طاقةً وإشراقةً نديّة تدوم.",fr:"Extrait pur de noni en ampoule concentrée. Énergise les peaux fatiguées pour un éclat frais durable."},
+  "Encapsulated Retinol 0.1% + 9 Peptide Complex + Panthenol 1%. Firms, refines texture and pores. Start with 2–3 evenings a week. 30ml.":{ar:"ريتينول مُغلَّف 0.1% + مركّب 9 ببتيدات + بانثينول 1%. يشدّ البشرة ويُنعّم الملمس ويُصغّر المسام. ابدئي بـ2–3 ليالٍ أسبوعياً. 30مل.",fr:"Rétinol encapsulé 0,1% + Complexe 9 Peptides + Panthénol 1%. Raffermit, affine le grain de peau et les pores. Commencez 2–3 soirs par semaine. 30ml."},
+  "Concentrated noni ampoule — antioxidant and soothing. Strengthens the barrier, calms redness and restores radiance. For all skin types. 30ml.":{ar:"أمبولة نوني مركّزة — مضادةٌ للأكسدة ومُلطّفة. تقوّي حاجز البشرة وتُهدّئ الاحمرار وتُعيد الإشراقة. لجميع أنواع البشرة. 30مل.",fr:"Ampoule concentrée au noni — antioxydante et apaisante. Renforce la barrière, calme les rougeurs et redonne de l'éclat. Tous types de peau. 30ml."},
   "Succinic Acid 10,000ppm + Niacinamide 50,000ppm. Clarifies, brightens and smooths.":{ar:"حمض السكسينيك 10,000ppm + نياسيناميد 50,000ppm. يُنقّي البشرة ويُضيئها ويُنعّمها.",fr:"Acide Succinique 10 000 ppm + Niacinamide 50 000 ppm. Clarifie, illumine et lisse."},
   "Very high UVB/UVA protection. Ultra-light fluid for normal to combination sensitive skin. HEV blue light protection. 50ml.":{ar:"حمايةٌ عالية جداً من أشعة UVB/UVA. فلويد خفيف جداً للبشرة العادية إلى المختلطة الحساسة. حمايةٌ من الضوء الأزرق HEV. 50مل.",fr:"Très haute protection UVB/UVA. Fluide ultra-léger pour peaux normales à mixtes sensibles. Protection lumière bleue HEV. 50ml."},
   // ── Hair descriptions ──
