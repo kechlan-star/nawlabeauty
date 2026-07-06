@@ -328,6 +328,17 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 .order-form .btn-primary{width:100%;justify-content:center;font-size:1rem;padding:16px}
 .form-note{font-size:.76rem;color:var(--ink-soft);text-align:center;margin-top:12px}
 
+/* ---------- FAQ ---------- */
+.faq{padding:40px 0 80px}
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-sm);margin-bottom:14px;overflow:hidden;transition:box-shadow .25s}
+.faq-item.open{box-shadow:var(--shadow-sm)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;text-align:right;font-family:var(--sans);font-weight:700;font-size:1.02rem;color:var(--plum-deep)}
+.faq-q .pm{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--blush);color:var(--clay-deep);display:grid;place-items:center;transition:transform .3s;font-size:1.2rem}
+.faq-item.open .pm{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s}
+.faq-a p{padding:0 24px 20px;color:var(--ink-mid);font-size:.94rem}
+
 /* ---------- Newsletter ---------- */
 .news{padding:20px 0 80px}
 .news-inner{background:var(--grad-warm);border-radius:32px;padding:56px;text-align:center;color:#fff;position:relative;overflow:hidden}
@@ -431,6 +442,30 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
   .field-row{grid-template-columns:1fr}
   .hero h1{font-size:2.3rem}
 }
+
+/* Quick-view modal */
+.qv-overlay{position:fixed;inset:0;background:rgba(51,35,42,.55);backdrop-filter:blur(4px);opacity:0;visibility:hidden;transition:opacity .3s;z-index:110}
+.qv-overlay.open{opacity:1;visibility:visible}
+.qv{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.94);width:min(760px,92vw);max-height:90vh;overflow:auto;background:var(--cream);border-radius:var(--radius);z-index:111;box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transition:opacity .3s,transform .3s;display:grid;grid-template-columns:1fr 1fr}
+.qv.open{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
+.qv-close{position:absolute;top:14px;left:14px;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.9);display:grid;place-items:center;color:var(--plum);z-index:2;box-shadow:var(--shadow-sm)}
+.qv-art{background:var(--grad-soft)}
+.qv-art svg{width:100%;height:100%;min-height:280px}
+.qv-info{padding:34px 30px}
+.qv-brand{font-family:var(--latin);font-style:italic;color:var(--clay);font-weight:600;font-size:.95rem}
+.qv-info h3{font-family:var(--sans);font-weight:700;font-size:1.35rem;color:var(--plum-deep);margin:6px 0 12px;line-height:1.4}
+.qv-info p{font-size:.92rem;color:var(--ink-mid);margin:12px 0 18px}
+.qv-price{margin-bottom:20px}
+.qv-price b{font-family:var(--disp);font-size:1.9rem;color:var(--plum-deep)}
+.qv-price s{color:var(--ink-soft);margin-right:8px;font-size:1rem}
+.qv-perks{display:flex;flex-direction:column;gap:7px;margin-top:18px;font-size:.84rem;color:var(--ink-mid)}
+@media(max-width:640px){.qv{grid-template-columns:1fr;max-height:88vh}.qv-art svg{min-height:200px}}
+
+/* Floating WhatsApp */
+.wa-fab{position:fixed;bottom:24px;left:24px;z-index:85;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(37,211,102,.44);transition:transform .3s;animation:wapulse 2.6s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:30px;height:30px;color:#fff}
+@keyframes wapulse{0%,100%{box-shadow:0 10px 26px rgba(37,211,102,.44)}50%{box-shadow:0 10px 26px rgba(37,211,102,.44),0 0 0 12px rgba(37,211,102,.12)}}
 
 /* Mobile menu */
 .mobile-menu{position:fixed;inset:0;background:var(--cream);z-index:95;padding:90px 30px 30px;transform:translateY(-100%);transition:transform .4s;display:flex;flex-direction:column;gap:6px}
@@ -791,6 +826,39 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">أسئلة شائعة</span>
+      <h2>كل ما تودّين معرفته</h2>
+      <p>لم تجدي إجابتكِ؟ تواصلي معنا مباشرة عبر واتساب، فريقنا سعيد بمساعدتكِ.</p>
+    </div>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">كم تستغرق مدة التوصيل؟ <span class="pm">+</span></button>
+        <div class="faq-a"><p>يصلكِ طلبكِ خلال 24 إلى 48 ساعة في المدن الكبرى، وقد تصل إلى 72 ساعة في المناطق البعيدة. نتصل بكِ دائمًا لتأكيد الطلب قبل الإرسال.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل الدفع عند الاستلام متاح فعلًا؟ <span class="pm">+</span></button>
+        <div class="faq-a"><p>نعم، تدفعين نقدًا فقط عند استلام طلبكِ بين يديكِ. لا حاجة لأي دفع إلكتروني مسبق، لراحتكِ وأمانكِ التام.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل المنتجات أصلية ومضمونة؟ <span class="pm">+</span></button>
+        <div class="faq-a"><p>كل منتجاتنا أصلية 100% ومستوردة مباشرة من العلامات الكورية والعالمية. نضمن لكِ جودة وسلامة كل ما تطلبينه.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">كم تكلفة التوصيل؟ <span class="pm">+</span></button>
+        <div class="faq-a"><p>التوصيل بـ 30 درهم فقط في كل المغرب، ومجاني تمامًا عند الطلب بقيمة 400 درهم فأكثر.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">هل يمكنني إرجاع المنتج؟ <span class="pm">+</span></button>
+        <div class="faq-a"><p>بالطبع. إذا وصلكِ منتج تالف أو غير مطابق، تواصلي معنا خلال 7 أيام ونتكفّل بالإرجاع أو الاستبدال دون أي متاعب.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Newsletter -->
 <section class="news">
   <div class="wrap">
@@ -859,6 +927,31 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
   </div>
 </aside>
 
+<!-- Floating WhatsApp -->
+<a class="wa-fab" id="waFab" href="https://wa.me/212600000000" target="_blank" aria-label="تواصلي عبر واتساب">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2m0 2a8 8 0 0 1 0 16 8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4m4.3 10.6c-.2-.1-1.3-.7-1.5-.8s-.4-.1-.5.1l-.7.9c-.1.1-.2.2-.4.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.3.1-.4l.3-.4.2-.4v-.3l-.8-1.8c-.2-.4-.3-.4-.5-.4h-.4a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 7 11.4a5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.5.6 2 .6 2.8.5a2.4 2.4 0 0 0 1.5-1.1 2 2 0 0 0 .1-1.1z"/></svg>
+</a>
+
+<!-- Quick-view modal -->
+<div class="qv-overlay" id="qvOverlay"></div>
+<div class="qv" id="qvModal" role="dialog" aria-modal="true">
+  <button class="qv-close" id="qvClose" aria-label="إغلاق"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button>
+  <div class="qv-art" id="qvArt"></div>
+  <div class="qv-info">
+    <span class="qv-brand" id="qvBrand"></span>
+    <h3 id="qvName"></h3>
+    <div class="stars" id="qvStars"></div>
+    <p id="qvDesc"></p>
+    <div class="qv-price" id="qvPrice"></div>
+    <button class="btn btn-primary" id="qvAdd" style="width:100%;justify-content:center">أضيفي إلى السلة
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+    </button>
+    <div class="qv-perks">
+      <span>✔️ أصلي 100%</span><span>🚚 توصيل 24-48 ساعة</span><span>💰 الدفع عند الاستلام</span>
+    </div>
+  </div>
+</div>
+
 <!-- Toast -->
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="toastMsg">تمت الإضافة إلى السلة</span></div>
 
@@ -883,6 +976,15 @@ const PRODUCTS = [
   {id:16, brand:"Round Lab", name:"واقي شمس مرطّب بعصير البتولا", cat:"Solaire", price:145, old:0, rating:4.8, reviews:203, badge:"", c1:"#EAD7C4", c2:"#C48A6A"},
 ];
 
+const DESC = {
+  "Sérums":"تركيبة مركّزة تغذّي البشرة بعمق وتمنحها إشراقة وترطيبًا يدوم طويلًا.",
+  "Toners":"يوازن درجة حموضة البشرة ويهيّئها لامتصاص المكوّنات الفعّالة بفعالية أكبر.",
+  "Crèmes":"مرطّب غني وغير دهني يغذّي البشرة ويحبس الترطيب طوال اليوم.",
+  "Nettoyants":"ينظّف البشرة بلطف من الشوائب والمكياج دون أن يجرّدها من رطوبتها الطبيعية.",
+  "Masques":"علاج مكثّف يمنح البشرة نضارة وإشراقة فورية في دقائق معدودة.",
+  "Solaire":"حماية يومية واسعة الطيف تحمي البشرة من أشعة الشمس الضارة وعلامات التقدّم في السن."
+};
+
 const productArt = (p) => `<svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="g${p.id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p.c1}"/><stop offset="1" stop-color="${p.c2}"/></linearGradient>
   <linearGradient id="bg${p.id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FDF8F4"/><stop offset="1" stop-color="#F7E4DA"/></linearGradient></defs>
@@ -898,11 +1000,16 @@ const productArt = (p) => `<svg viewBox="0 0 300 300" preserveAspectRatio="xMidY
   <text x="150" y="200" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="15" font-style="italic" fill="${p.c2}">${p.brand.split(' ')[0]}</text>
 </svg>`;
 
+// ---------- Config ----------
+const SHOP = { whatsapp: '212600000000', freeShip: 400, shipFee: 30 };
+
 // ---------- State ----------
-let cart = [];
-let currentFilter = 'all';
 const $ = (s)=>document.querySelector(s);
 const fmt = (n)=>n.toLocaleString('en-US')+' درهم';
+let currentFilter = 'all';
+let cart = [];
+try{ cart = JSON.parse(localStorage.getItem('elora_cart')||'[]') || []; }catch(e){ cart = []; }
+function saveCart(){ try{ localStorage.setItem('elora_cart', JSON.stringify(cart)); }catch(e){} }
 
 // ---------- Render products ----------
 function renderProducts(){
@@ -913,7 +1020,7 @@ function renderProducts(){
     const oldHtml = p.old ? `<s>${fmt(p.old)}</s>`:'';
     const fullStars = Math.round(p.rating);
     return `<div class="card reveal" data-cat="${p.cat}">
-      <div class="card-art">
+      <div class="card-art" data-view="${p.id}" style="cursor:pointer">
         ${badgeHtml}
         <button class="wish" data-wish="${p.id}" aria-label="المفضلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke-linejoin="round"/></svg></button>
         ${productArt(p)}
@@ -955,6 +1062,7 @@ function cartSubtotal(){ return cart.reduce((s,x)=>s+x.price*x.qty,0); }
 function cartCount(){ return cart.reduce((s,x)=>s+x.qty,0); }
 
 function updateCart(){
+  saveCart();
   const count = cartCount();
   const badge = $('#cartCount');
   badge.textContent = count;
@@ -989,7 +1097,7 @@ function updateCart(){
 function updateSummary(){
   const sub = cartSubtotal();
   const count = cartCount();
-  const ship = sub>=400 || sub===0 ? 0 : 30;
+  const ship = sub>=SHOP.freeShip || sub===0 ? 0 : SHOP.shipFee;
   $('#sumItems').textContent = `السلة (${count} منتج)`;
   $('#sumSub').textContent = fmt(sub);
   $('#sumShip').textContent = sub===0 ? '—' : (ship===0 ? 'مجاني' : fmt(ship));
@@ -1010,6 +1118,26 @@ function showToast(msg){
 function openDrawer(){ $('#drawer').classList.add('open'); $('#overlay').classList.add('open'); }
 function closeDrawer(){ $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open'); }
 
+// ---------- Quick view ----------
+let qvId = null;
+function openQuickView(id){
+  const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+  qvId = id;
+  const fullStars = Math.round(p.rating);
+  $('#qvArt').innerHTML = productArt(p);
+  $('#qvBrand').textContent = p.brand;
+  $('#qvName').textContent = p.name;
+  $('#qvStars').innerHTML = `${'★'.repeat(fullStars)}${'☆'.repeat(5-fullStars)}<small>${p.rating} (${p.reviews} تقييم)</small>`;
+  $('#qvDesc').textContent = DESC[p.cat] || '';
+  $('#qvPrice').innerHTML = `<b>${fmt(p.price)}</b>${p.old?`<s>${fmt(p.old)}</s>`:''}`;
+  $('#qvModal').classList.add('open'); $('#qvOverlay').classList.add('open');
+}
+function closeQuickView(){ $('#qvModal').classList.remove('open'); $('#qvOverlay').classList.remove('open'); }
+$('#qvClose').addEventListener('click', closeQuickView);
+$('#qvOverlay').addEventListener('click', closeQuickView);
+$('#qvAdd').addEventListener('click',()=>{ if(qvId){ addToCart(qvId); closeQuickView(); openDrawer(); } });
+document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ closeQuickView(); closeDrawer(); } });
+
 // ---------- Events ----------
 document.addEventListener('click',(e)=>{
   const add = e.target.closest('[data-add]');
@@ -1022,6 +1150,8 @@ document.addEventListener('click',(e)=>{
   }
   const wish = e.target.closest('[data-wish]');
   if(wish){ wish.classList.toggle('on'); return; }
+  const view = e.target.closest('[data-view]');
+  if(view){ openQuickView(+view.dataset.view); return; }
   const minus = e.target.closest('[data-minus]');
   if(minus){ changeQty(+minus.dataset.minus,-1); return; }
   const plus = e.target.closest('[data-plus]');
@@ -1056,12 +1186,34 @@ document.querySelectorAll('.cat').forEach(c=>{
   });
 });
 
-// Order form
+// Order form -> WhatsApp
 $('#orderForm').addEventListener('submit',(e)=>{
   e.preventDefault();
   if(cart.length===0){ showToast('أضيفي منتجًا أولًا 🛍️'); document.getElementById('boutique').scrollIntoView({behavior:'smooth'}); return; }
-  const name = $('#fullname').value.split(' ')[0];
-  showToast(`شكرًا ${name}! تم استلام طلبكِ ✨`);
+  const name = $('#fullname').value.trim();
+  const phone = $('#phone').value.trim();
+  const city = $('#city').value;
+  const address = $('#address').value.trim();
+  const notes = $('#notes').value.trim();
+  const sub = cartSubtotal();
+  const ship = sub>=SHOP.freeShip ? 0 : SHOP.shipFee;
+
+  const lines = cart.map(x=>`• ${x.name} (${x.brand}) ×${x.qty} — ${fmt(x.price*x.qty)}`).join('\n');
+  const msg =
+`🌷 طلب جديد من إيلورا بيوتي\n\n`+
+`👤 الاسم: ${name}\n`+
+`📞 الهاتف: ${phone}\n`+
+`🏙️ المدينة: ${city}\n`+
+`📍 العنوان: ${address}\n`+
+(notes?`📝 ملاحظة: ${notes}\n`:'')+
+`\n🛍️ الطلب:\n${lines}\n\n`+
+`المجموع الفرعي: ${fmt(sub)}\n`+
+`التوصيل: ${ship===0?'مجاني':fmt(ship)}\n`+
+`💰 المجموع للدفع: ${fmt(sub+ship)}\n\n`+
+`الدفع عند الاستلام ✔️`;
+
+  window.open(`https://wa.me/${SHOP.whatsapp}?text=${encodeURIComponent(msg)}`,'_blank');
+  showToast(`شكرًا ${name.split(' ')[0]||''}! جارٍ إرسال طلبكِ عبر واتساب ✨`);
   e.target.reset();
   cart = [];
   updateCart();
@@ -1069,6 +1221,18 @@ $('#orderForm').addEventListener('submit',(e)=>{
 
 // Newsletter
 $('#newsForm').addEventListener('submit',(e)=>{ e.preventDefault(); showToast('مرحبًا بكِ في نادي إيلورا 🤍 خصم -15%!'); e.target.reset(); });
+
+// FAQ accordion
+$('#faqList').addEventListener('click',(e)=>{
+  const q = e.target.closest('.faq-q'); if(!q) return;
+  const item = q.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(it=>{ it.classList.remove('open'); it.querySelector('.faq-a').style.maxHeight=null; });
+  if(!wasOpen){ item.classList.add('open'); const a=item.querySelector('.faq-a'); a.style.maxHeight=a.scrollHeight+'px'; }
+});
+
+// Sync WhatsApp links to config
+$('#waFab').href = `https://wa.me/${SHOP.whatsapp}`;
 
 // Mobile menu
 $('#burger').addEventListener('click',()=>$('#mobileMenu').classList.add('open'));
