@@ -94,6 +94,47 @@ nav.scrolled{padding:0.7rem 3rem;background:rgba(255,245,248,0.92);box-shadow:0 
 .nav-cta:hover::before{left:140%}
 .nav-search-btn{display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1.5px solid rgba(196,91,122,0.28);background:rgba(255,255,255,0.5);color:var(--rose-dark);cursor:pointer;transition:background .25s,color .25s,transform .2s;margin-inline-end:0.7rem}
 .nav-search-btn:hover{background:var(--grad-rose);color:#fff;transform:scale(1.06)}
+.nav-search-btn svg,.nav-cart-btn svg{pointer-events:none}
+/* CART BUTTON */
+.nav-cart-btn{position:relative;display:flex;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1.5px solid rgba(196,91,122,0.28);background:rgba(255,255,255,0.5);color:var(--rose-dark);cursor:pointer;transition:background .25s,color .25s,transform .2s;margin-inline-end:0.7rem}
+.nav-cart-btn:hover{background:var(--grad-rose);color:#fff;transform:scale(1.06)}
+.cart-count{position:absolute;top:-5px;inset-inline-end:-5px;min-width:17px;height:17px;padding:0 4px;border-radius:9px;background:var(--rose-deep);color:#fff;font-size:0.58rem;font-weight:700;display:none;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(232,120,154,0.5)}
+.cart-count.show{display:flex}
+/* ADD-TO-CART on product card */
+.add-cart{position:absolute;top:8px;inset-inline-start:8px;z-index:4;width:34px;height:34px;border-radius:50%;border:none;background:rgba(255,255,255,0.9);color:var(--rose-dark);font-size:1.1rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(196,91,122,0.25);transition:background .25s,color .25s,transform .2s}
+.add-cart:hover{background:var(--grad-rose);color:#fff;transform:scale(1.1)}
+.add-cart.added{background:#2D6A4F;color:#fff}
+/* CART DRAWER */
+.cart-overlay{position:fixed;inset:0;z-index:159;background:rgba(58,26,36,0.5);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;inset-inline-end:0;z-index:160;width:380px;max-width:90vw;height:100%;background:var(--soft-white);box-shadow:-14px 0 40px rgba(196,91,122,0.18);transform:translateX(110%);transition:transform .4s var(--ease);display:flex;flex-direction:column}
+html[dir="rtl"] .cart-drawer{transform:translateX(-110%)}
+.cart-drawer.open,html[dir="rtl"] .cart-drawer.open{transform:translateX(0)!important}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.4rem;border-bottom:1px solid var(--border)}
+.cart-head h3{font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--rose-dark)}
+.cart-close{width:32px;height:32px;border-radius:50%;border:none;background:#fff;color:var(--text-mid);cursor:pointer;font-size:0.9rem;transition:background .25s,color .25s}
+.cart-close:hover{background:var(--rose-deep);color:#fff}
+.cart-body{flex:1;overflow-y:auto;padding:1rem 1.4rem;display:flex;flex-direction:column;gap:0.8rem}
+.cart-empty{text-align:center;color:var(--text-light);font-size:0.82rem;margin-top:2.5rem}
+.cart-row{display:flex;gap:0.8rem;align-items:center;background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:0.7rem 0.8rem}
+.cart-row-info{flex:1;min-width:0}
+.cart-row-name{font-size:0.8rem;color:var(--text);font-weight:500;line-height:1.3}
+.cart-row-price{font-size:0.72rem;color:var(--rose-dark);margin-top:0.15rem}
+.cart-qty{display:flex;align-items:center;gap:0.5rem;flex:0 0 auto}
+.cart-qty button{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);background:var(--soft-white);color:var(--rose-dark);cursor:pointer;font-size:0.8rem;line-height:1;display:flex;align-items:center;justify-content:center}
+.cart-qty button:hover{background:var(--rose-deep);color:#fff;border-color:var(--rose-deep)}
+.cart-qty span{font-size:0.8rem;min-width:16px;text-align:center}
+.cart-row-del{flex:0 0 auto;background:none;border:none;color:var(--text-light);cursor:pointer;font-size:0.9rem;padding:2px}
+.cart-row-del:hover{color:var(--rose-deep)}
+.cart-foot{border-top:1px solid var(--border);padding:1.2rem 1.4rem;display:flex;flex-direction:column;gap:0.9rem}
+.cart-total{display:flex;justify-content:space-between;align-items:center;font-family:var(--serif)}
+.cart-total .lbl{font-size:0.9rem;color:var(--text-mid)}
+.cart-total .val{font-size:1.4rem;font-weight:600;color:var(--rose-dark)}
+.cart-order-btn{display:flex;align-items:center;justify-content:center;gap:0.6rem;background:#25D366;color:#fff;text-decoration:none;border:none;cursor:pointer;padding:0.9rem;border-radius:var(--r-pill);font-family:var(--sans);font-weight:600;font-size:0.88rem;transition:transform .2s,box-shadow .3s,opacity .2s;box-shadow:0 6px 18px rgba(37,211,102,0.35)}
+.cart-order-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,0.45)}
+.cart-order-btn svg{width:19px;height:19px;fill:#fff}
+.cart-clear{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:0.72rem;text-decoration:underline}
+.cart-clear:hover{color:var(--rose-deep)}
 .search-overlay{position:fixed;inset:0;z-index:149;background:rgba(58,26,36,0.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
 .search-overlay.open{opacity:1;pointer-events:all}
 .search-panel{position:fixed;top:0;left:0;right:0;z-index:150;background:rgba(255,245,248,0.97);backdrop-filter:blur(18px);box-shadow:0 14px 40px rgba(196,91,122,0.18);padding:1.1rem 3rem;transform:translateY(-110%);transition:transform .4s var(--ease);border-bottom:1px solid var(--border)}
@@ -689,6 +730,10 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <button class="nav-search-btn" onclick="toggleSearch()" aria-label="Search">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
   </button>
+  <button class="nav-cart-btn" onclick="toggleCart()" aria-label="Cart">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    <span class="cart-count" id="cart-count">0</span>
+  </button>
   <div class="lang-switcher">
     <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
     <button class="lang-btn" onclick="setLang('fr')" id="btn-fr">FR</button>
@@ -705,6 +750,22 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   </div>
   <div class="search-no-results" id="search-no-results"></div>
 </div>
+<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+<aside class="cart-drawer" id="cart-drawer" aria-label="Cart">
+  <div class="cart-head">
+    <h3 data-i18n="cart_title">Your Cart</h3>
+    <button class="cart-close" onclick="toggleCart()" aria-label="Close">✕</button>
+  </div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-foot" id="cart-foot">
+    <div class="cart-total"><span class="lbl" data-i18n="cart_total">Total</span><span class="val" id="cart-total-val">0 DHS</span></div>
+    <button class="cart-order-btn" onclick="orderCart()">
+      <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0012.04 2zm5.83 14.07c-.25.7-1.45 1.34-2 1.43-.51.08-1.15.11-1.86-.12-.43-.13-.98-.32-1.69-.62-2.97-1.28-4.9-4.27-5.05-4.47-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.6-.37.8-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.45.52-.15.15-.3.31-.13.6.18.3.78 1.28 1.67 2.08 1.15 1.02 2.11 1.34 2.41 1.49.3.15.47.13.65-.08.18-.2.76-.88.96-1.18.2-.3.4-.25.67-.15.27.1 1.74.82 2.04.97.3.15.5.22.57.34.07.13.07.74-.18 1.44z"/></svg>
+      <span data-i18n="cart_order">Order on WhatsApp</span>
+    </button>
+    <button class="cart-clear" onclick="clearCart()" data-i18n="cart_clear">Clear cart</button>
+  </div>
+</aside>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1353,9 +1414,11 @@ function filterProducts(query){
   document.querySelectorAll('.prod-card,.hair-card').forEach(card=>{
     const nameEl=card.querySelector('.prod-name,.hair-name');
     const brandEl=card.querySelector('.prod-brand,.hair-brand');
+    const descEl=card.querySelector('.prod-desc,.hair-desc');
     const haystack=[
       nameEl?nameEl.textContent:'', nameEl&&nameEl.dataset.en?nameEl.dataset.en:'',
-      brandEl?brandEl.textContent:''
+      brandEl?brandEl.textContent:'',
+      descEl?descEl.textContent:'', descEl&&descEl.dataset.en?descEl.dataset.en:''
     ].join(' ').toLowerCase();
     const match=!q||haystack.includes(q);
     card.style.display=match?'':'none';
@@ -1568,6 +1631,7 @@ const translations = {
   en: {
     nav_skin:"Skincare", nav_hair:"Hair Care", nav_about:"About", nav_order:"Order", nav_cta:"Shop Now",
     search_ph:"Search products...", search_no_results:"No products found.",
+    cart_title:"Your Cart", cart_total:"Total", cart_order:"Order on WhatsApp", cart_clear:"Clear cart", cart_empty:"Your cart is empty", cart_wa_header:"Hello Nawla Beauty! I would like to order:",
     ts_receipt_t:"Receipt with order", ts_receipt_s:"Every order tracked",
     ts_auth_t:"100% Authentic", ts_auth_s:"Guaranteed quality",
     ts_deliv_t:"Delivery all Morocco", ts_deliv_s:"Cash on delivery",
@@ -1617,6 +1681,7 @@ const translations = {
   fr: {
     nav_skin:"Soins Visage", nav_hair:"Soins Cheveux", nav_about:"À propos", nav_order:"Commander", nav_cta:"Commander",
     search_ph:"Rechercher des produits...", search_no_results:"Aucun produit trouvé.",
+    cart_title:"Votre Panier", cart_total:"Total", cart_order:"Commander sur WhatsApp", cart_clear:"Vider le panier", cart_empty:"Votre panier est vide", cart_wa_header:"Bonjour Nawla Beauty ! Je souhaite commander :",
     ts_receipt_t:"Reçu avec la commande", ts_receipt_s:"Chaque commande suivie",
     ts_auth_t:"100% Authentique", ts_auth_s:"Qualité garantie",
     ts_deliv_t:"Livraison tout le Maroc", ts_deliv_s:"Paiement à la livraison",
@@ -1666,6 +1731,7 @@ const translations = {
   ar: {
     nav_skin:"العناية بالبشرة", nav_hair:"العناية بالشعر", nav_about:"من نحن", nav_order:"اطلبي الآن", nav_cta:"تسوّقي الآن",
     search_ph:"ابحثي عن منتج...", search_no_results:"لم يتم العثور على منتجات.",
+    cart_title:"سلّتكِ", cart_total:"الإجمالي", cart_order:"اطلبي عبر واتساب", cart_clear:"إفراغ السلّة", cart_empty:"سلّتكِ فارغة", cart_wa_header:"مرحباً نولا بيوتي! أودّ طلب:",
     ts_receipt_t:"وصل مع الطلبية", ts_receipt_s:"تتبع كل طلب",
     ts_auth_t:"أصلي 100%", ts_auth_s:"جودة مضمونة",
     ts_deliv_t:"التوصيل لكل المغرب", ts_deliv_s:"الأداء عند الاستلام",
@@ -2111,6 +2177,116 @@ function setJmask(i){
     stage.style.transform = 'rotateY(0deg) rotateX(0deg)';
   });
 })();
+
+// ── CART ──
+let _cart = [];
+try { _cart = JSON.parse(localStorage.getItem('nawla_cart')) || []; } catch(e){ _cart = []; }
+const WA_NUMBER = '212714239663';
+
+function _saveCart(){ try{ localStorage.setItem('nawla_cart', JSON.stringify(_cart)); }catch(e){} }
+
+function addToCart(name, price){
+  const p = parseInt(price, 10) || 0;
+  const existing = _cart.find(i => i.name === name);
+  if(existing) existing.qty++;
+  else _cart.push({name, price:p, qty:1});
+  _saveCart();
+  renderCart();
+}
+function cartChangeQty(name, delta){
+  const it = _cart.find(i => i.name === name);
+  if(!it) return;
+  it.qty += delta;
+  if(it.qty <= 0) _cart = _cart.filter(i => i.name !== name);
+  _saveCart();
+  renderCart();
+}
+function cartRemove(name){
+  _cart = _cart.filter(i => i.name !== name);
+  _saveCart();
+  renderCart();
+}
+function clearCart(){
+  _cart = [];
+  _saveCart();
+  renderCart();
+}
+function cartTotal(){ return _cart.reduce((s,i)=>s + i.price*i.qty, 0); }
+
+function renderCart(){
+  const t = translations[currentLang] || translations.ar;
+  const count = _cart.reduce((s,i)=>s+i.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if(badge){ badge.textContent = count; badge.classList.toggle('show', count>0); }
+  const body = document.getElementById('cart-body');
+  const foot = document.getElementById('cart-foot');
+  if(!body) return;
+  if(_cart.length === 0){
+    body.innerHTML = '<div class="cart-empty">'+(t.cart_empty||'Your cart is empty')+'</div>';
+    if(foot) foot.style.display = 'none';
+    return;
+  }
+  if(foot) foot.style.display = 'flex';
+  body.innerHTML = _cart.map(i => {
+    const nm = i.name.replace(/</g,'&lt;');
+    return '<div class="cart-row">'
+      + '<div class="cart-row-info"><div class="cart-row-name">'+nm+'</div>'
+      + '<div class="cart-row-price">'+i.price+' DHS</div></div>'
+      + '<div class="cart-qty"><button onclick="cartChangeQty(\''+i.name.replace(/'/g,"\\'")+'\',-1)" aria-label="-">−</button>'
+      + '<span>'+i.qty+'</span>'
+      + '<button onclick="cartChangeQty(\''+i.name.replace(/'/g,"\\'")+'\',1)" aria-label="+">+</button></div>'
+      + '<button class="cart-row-del" onclick="cartRemove(\''+i.name.replace(/'/g,"\\'")+'\')" aria-label="remove">🗑</button>'
+      + '</div>';
+  }).join('');
+  const tv = document.getElementById('cart-total-val');
+  if(tv) tv.textContent = cartTotal() + ' DHS';
+}
+
+let _cartOpen = false;
+function toggleCart(){
+  _cartOpen = !_cartOpen;
+  document.getElementById('cart-drawer').classList.toggle('open', _cartOpen);
+  document.getElementById('cart-overlay').classList.toggle('open', _cartOpen);
+  if(_cartOpen) renderCart();
+}
+function orderCart(){
+  if(_cart.length === 0) return;
+  const t = translations[currentLang] || translations.ar;
+  const lines = _cart.map(i => '• '+i.name+' × '+i.qty+' — '+(i.price*i.qty)+' DHS');
+  const header = t.cart_wa_header || 'Hello Nawla Beauty! I would like to order:';
+  const totalLine = (t.cart_total || 'Total') + ': ' + cartTotal() + ' DHS';
+  const msg = header + '\n\n' + lines.join('\n') + '\n\n' + totalLine;
+  window.open('https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg), '_blank', 'noopener');
+}
+
+function initCart(){
+  document.querySelectorAll('.prod-card, .hair-card').forEach(card => {
+    const btn = card.querySelector('.prod-buy, .hair-buy');
+    if(!btn) return;
+    const oc = btn.getAttribute('onclick') || '';
+    const m = oc.match(/openPayment\((['"])(.*?)\1\s*,\s*(['"])(\d+)\3\)/);
+    if(!m) return;
+    const name = m[2], price = m[4];
+    const wrap = card.querySelector('.prod-img-wrap') || (card.querySelector('.hair-img') && card.querySelector('.hair-img').parentElement);
+    if(!wrap || wrap.querySelector('.add-cart')) return;
+    if(getComputedStyle(wrap).position === 'static') wrap.style.position = 'relative';
+    const add = document.createElement('button');
+    add.className = 'add-cart';
+    add.type = 'button';
+    add.setAttribute('aria-label', 'Add to cart');
+    add.textContent = '+';
+    add.addEventListener('click', e => {
+      e.stopPropagation();
+      addToCart(name, price);
+      add.classList.add('added'); add.textContent = '✓';
+      setTimeout(()=>{ add.classList.remove('added'); add.textContent = '+'; }, 900);
+    });
+    wrap.appendChild(add);
+  });
+  renderCart();
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape' && _cartOpen) toggleCart(); });
+initCart();
 
 // Initialize Arabic as default language
 setLang('ar');
