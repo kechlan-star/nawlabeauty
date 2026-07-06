@@ -135,6 +135,29 @@ html[dir="rtl"] .cart-drawer{transform:translateX(-110%)}
 .cart-order-btn svg{width:19px;height:19px;fill:#fff}
 .cart-clear{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:0.72rem;text-decoration:underline}
 .cart-clear:hover{color:var(--rose-deep)}
+/* NAV PROMO LINK */
+.nav-links a.nav-promo{background:var(--grad-rose);color:#fff;padding:0.4rem 0.95rem;border-radius:var(--r-pill);box-shadow:0 4px 12px rgba(232,120,154,0.35);text-transform:uppercase}
+.nav-links a.nav-promo::after{display:none}
+.nav-links a.nav-promo:hover{color:#fff;transform:translateY(-1px)}
+.nav-links a.nav-promo::before{content:'🎁 ';font-size:0.8rem}
+/* PACKS SECTION */
+.packs-section{background:radial-gradient(900px 500px at 10% 0%, rgba(250,204,218,0.4), transparent 60%),var(--soft-white)}
+.packs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.6rem}
+.pack-card{position:relative;background:#fff;border-radius:var(--r-lg);padding:1.5rem;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:transform .35s var(--ease),box-shadow .35s;display:flex;flex-direction:column}
+.pack-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+.pack-save{position:absolute;top:14px;inset-inline-end:14px;z-index:2;background:var(--grad-gold);color:#3A1A24;font-size:0.6rem;font-weight:700;letter-spacing:0.06em;padding:4px 10px;border-radius:var(--r-pill);box-shadow:0 3px 10px rgba(201,169,110,0.4)}
+.pack-imgs{display:flex;align-items:center;justify-content:center;gap:0.5rem;height:155px;background:radial-gradient(circle at 50% 40%,#fff,var(--blush));border-radius:var(--r-md);margin-bottom:1.1rem}
+.pack-imgs img{height:135px;width:auto;max-width:42%;object-fit:contain;border-radius:8px;filter:drop-shadow(0 8px 18px rgba(196,91,122,0.22))}
+.pack-plus{font-family:var(--serif);font-size:1.5rem;color:var(--rose-deep);flex:0 0 auto}
+.pack-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
+.pack-items{font-size:0.72rem;color:var(--text-light);margin-bottom:1rem;line-height:1.5;flex:1}
+.pack-foot{display:flex;align-items:center;justify-content:space-between;gap:0.6rem;margin-top:auto}
+.pack-price{display:flex;flex-direction:column;line-height:1.15}
+.pack-old{font-size:0.7rem;color:var(--text-light);text-decoration:line-through}
+.pack-new{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--rose-dark)}
+.pack-buy{flex:0 0 auto;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.6rem 1.05rem;background:var(--rose-deep);color:#fff;border:none;cursor:pointer;font-family:var(--sans);font-weight:500;border-radius:var(--r-pill);box-shadow:0 4px 14px rgba(232,120,154,0.3);transition:background .25s,transform .2s}
+.pack-buy:hover{background:var(--rose-dark);transform:translateY(-2px)}
+html[lang="ar"] .pack-foot{flex-direction:row-reverse}
 .search-overlay{position:fixed;inset:0;z-index:149;background:rgba(58,26,36,0.45);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .3s}
 .search-overlay.open{opacity:1;pointer-events:all}
 .search-panel{position:fixed;top:0;left:0;right:0;z-index:150;background:rgba(255,245,248,0.97);backdrop-filter:blur(18px);box-shadow:0 14px 40px rgba(196,91,122,0.18);padding:1.1rem 3rem;transform:translateY(-110%);transition:transform .4s var(--ease);border-bottom:1px solid var(--border)}
@@ -189,6 +212,7 @@ html[dir="rtl"] .cart-drawer{transform:translateX(-110%)}
 @media(max-width:900px){
   .tstrip-wrap{padding:2.5rem 1.5rem 0}
   .rev-grid{grid-template-columns:1fr}
+  .packs-grid{grid-template-columns:1fr}
   .waflow{padding:1.7rem}
 }
 @media(max-width:560px){
@@ -722,6 +746,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
 <nav>
   <a class="nav-logo" href="#">NAWLA BEAUTY</a>
   <ul class="nav-links">
+    <li><a href="#packs" class="nav-promo" data-i18n="nav_packs">Packs</a></li>
     <li><a href="#products" data-i18n="nav_skin">Skincare</a></li>
     <li><a href="#haircare" data-i18n="nav_hair">Hair Care</a></li>
     <li><a href="#philosophy" data-i18n="nav_about">About</a></li>
@@ -841,6 +866,62 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
     <div class="stat-card"><div class="stat-n">11</div><div class="stat-l" data-i18n="stat2">Luxury Brands</div></div>
     <div class="stat-card"><div class="stat-n">98%</div><div class="stat-l" data-i18n="stat3">Natural Actives</div></div>
     <div class="stat-card"><div class="stat-n">0</div><div class="stat-l" data-i18n="stat4">Parabens & Toxins</div></div>
+  </div>
+</section>
+
+<!-- PACKS -->
+<section class="packs-section" id="packs">
+  <div class="eyebrow" data-i18n="packs_eyebrow">Special Offers</div>
+  <h2 class="sec-title"><span data-i18n="packs_title_1">Curated </span><em data-i18n="packs_title_em">bundles</em><span data-i18n="packs_title_2"> for less</span></h2>
+  <div class="packs-grid">
+    <div class="pack-card">
+      <div class="pack-save"><span data-i18n="pack_save">Save</span> 80 DHS</div>
+      <div class="pack-imgs">
+        <img data-prod="Celimax Retinal Shot Tightening Booster" alt="" loading="lazy"/>
+        <span class="pack-plus">+</span>
+        <img data-prod="Eqqualberry Bakuchiol Plumping Serum" alt="" loading="lazy"/>
+      </div>
+      <div class="pack-info">
+        <div class="pack-name" data-i18n="pack1_name">Anti-Aging Duo</div>
+        <div class="pack-items" data-i18n="pack1_items">Celimax Retinal Booster + Eqqualberry Bakuchiol</div>
+        <div class="pack-foot">
+          <div class="pack-price"><span class="pack-old">570 DHS</span><span class="pack-new">490 DHS</span></div>
+          <button class="pack-buy" onclick="addToCart('Pack — Anti-Aging Duo (Celimax Retinal Booster + Eqqualberry Bakuchiol)','490');toggleCart()" data-i18n="pack_add">Add Pack</button>
+        </div>
+      </div>
+    </div>
+    <div class="pack-card">
+      <div class="pack-save"><span data-i18n="pack_save">Save</span> 90 DHS</div>
+      <div class="pack-imgs">
+        <img data-prod="Dr.Althea 345 Relief Cream" alt="" loading="lazy"/>
+        <span class="pack-plus">+</span>
+        <img data-prod="Dr.Althea 345 Relief Cream" alt="" loading="lazy"/>
+      </div>
+      <div class="pack-info">
+        <div class="pack-name" data-i18n="pack2_name">Dr.Althea 345 Duo</div>
+        <div class="pack-items" data-i18n="pack2_items">2× Dr.Althea 345 Relief Cream</div>
+        <div class="pack-foot">
+          <div class="pack-price"><span class="pack-old">580 DHS</span><span class="pack-new">490 DHS</span></div>
+          <button class="pack-buy" onclick="addToCart('Pack — Dr.Althea 345 Duo (2x 345 Relief Cream)','490');toggleCart()" data-i18n="pack_add">Add Pack</button>
+        </div>
+      </div>
+    </div>
+    <div class="pack-card">
+      <div class="pack-save"><span data-i18n="pack_save">Save</span> 80 DHS</div>
+      <div class="pack-imgs">
+        <img data-prod="Anua Niacinamide 10% + TXA 4% Serum" alt="" loading="lazy"/>
+        <span class="pack-plus">+</span>
+        <img data-prod="Dr.Althea Vitamin C Boosting Serum" alt="" loading="lazy"/>
+      </div>
+      <div class="pack-info">
+        <div class="pack-name" data-i18n="pack3_name">Glow &amp; Brighten</div>
+        <div class="pack-items" data-i18n="pack3_items">Anua Niacinamide + Dr.Althea Vitamin C</div>
+        <div class="pack-foot">
+          <div class="pack-price"><span class="pack-old">550 DHS</span><span class="pack-new">470 DHS</span></div>
+          <button class="pack-buy" onclick="addToCart('Pack — Glow &amp; Brighten (Anua Niacinamide + Dr.Althea Vitamin C)','470');toggleCart()" data-i18n="pack_add">Add Pack</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1689,6 +1770,12 @@ function showWhatsAppSuggestion() {
 const translations = {
   en: {
     nav_skin:"Skincare", nav_hair:"Hair Care", nav_about:"About", nav_order:"Order", nav_cta:"Shop Now",
+    nav_packs:"Packs",
+    packs_eyebrow:"Special Offers", packs_title_1:"Curated ", packs_title_em:"bundles", packs_title_2:" for less",
+    pack_save:"Save", pack_add:"Add Pack",
+    pack1_name:"Anti-Aging Duo", pack1_items:"Celimax Retinal Booster + Eqqualberry Bakuchiol",
+    pack2_name:"Dr.Althea 345 Duo", pack2_items:"2× Dr.Althea 345 Relief Cream",
+    pack3_name:"Glow & Brighten", pack3_items:"Anua Niacinamide + Dr.Althea Vitamin C",
     search_ph:"Search products...", search_no_results:"No products found.",
     cart_title:"Your Cart", cart_total:"Total", cart_order:"Order on WhatsApp", cart_clear:"Clear cart", cart_empty:"Your cart is empty", cart_wa_header:"Hello Nawla Beauty! I would like to order:",
     ts_receipt_t:"Receipt with order", ts_receipt_s:"Every order tracked",
@@ -1739,6 +1826,12 @@ const translations = {
   },
   fr: {
     nav_skin:"Soins Visage", nav_hair:"Soins Cheveux", nav_about:"À propos", nav_order:"Commander", nav_cta:"Commander",
+    nav_packs:"Packs",
+    packs_eyebrow:"Offres Spéciales", packs_title_1:"Des ", packs_title_em:"coffrets", packs_title_2:" à prix réduit",
+    pack_save:"Économisez", pack_add:"Ajouter",
+    pack1_name:"Duo Anti-Âge", pack1_items:"Booster Rétinal Celimax + Bakuchiol Eqqualberry",
+    pack2_name:"Duo Dr.Althea 345", pack2_items:"2× Crème Apaisante Dr.Althea 345",
+    pack3_name:"Éclat & Uniformité", pack3_items:"Niacinamide Anua + Vitamine C Dr.Althea",
     search_ph:"Rechercher des produits...", search_no_results:"Aucun produit trouvé.",
     cart_title:"Votre Panier", cart_total:"Total", cart_order:"Commander sur WhatsApp", cart_clear:"Vider le panier", cart_empty:"Votre panier est vide", cart_wa_header:"Bonjour Nawla Beauty ! Je souhaite commander :",
     ts_receipt_t:"Reçu avec la commande", ts_receipt_s:"Chaque commande suivie",
@@ -1789,6 +1882,12 @@ const translations = {
   },
   ar: {
     nav_skin:"العناية بالبشرة", nav_hair:"العناية بالشعر", nav_about:"من نحن", nav_order:"اطلبي الآن", nav_cta:"تسوّقي الآن",
+    nav_packs:"عروض",
+    packs_eyebrow:"عروض خاصة", packs_title_1:"باقاتٌ ", packs_title_em:"مختارة", packs_title_2:" بأسعار مميّزة",
+    pack_save:"وفّري", pack_add:"أضيفي الباقة",
+    pack1_name:"باقة مكافحة الشيخوخة", pack1_items:"بوستر الريتينال سيليماكس + باكوتشيول إيكوالبيري",
+    pack2_name:"باقة درع ألثيا 345", pack2_items:"كريم 345 المُهدّئ × 2",
+    pack3_name:"باقة الإشراقة والتفتيح", pack3_items:"نياسيناميد أنوا + فيتامين C درع ألثيا",
     search_ph:"ابحثي عن منتج...", search_no_results:"لم يتم العثور على منتجات.",
     cart_title:"سلّتكِ", cart_total:"الإجمالي", cart_order:"اطلبي عبر واتساب", cart_clear:"إفراغ السلّة", cart_empty:"سلّتكِ فارغة", cart_wa_header:"مرحباً نولا بيوتي! أودّ طلب:",
     ts_receipt_t:"وصل مع الطلبية", ts_receipt_s:"تتبع كل طلب",
@@ -2350,6 +2449,22 @@ function initCart(){
 }
 document.addEventListener('keydown', e => { if(e.key === 'Escape' && _cartOpen) toggleCart(); });
 initCart();
+
+// ── PACKS: fill bundle thumbnails from existing product images ──
+function initPacks(){
+  const map = {};
+  document.querySelectorAll('.prod-card').forEach(c => {
+    const oc = c.getAttribute('onclick') || '';
+    const m = oc.match(/openPayment\((['"])(.*?)\1/);
+    const img = c.querySelector('img');
+    if(m && img) map[m[2]] = img.getAttribute('src');
+  });
+  document.querySelectorAll('.pack-imgs img[data-prod]').forEach(im => {
+    const src = map[im.getAttribute('data-prod')];
+    if(src) im.src = src;
+  });
+}
+initPacks();
 
 // Initialize Arabic as default language
 setLang('ar');
