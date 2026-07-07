@@ -225,6 +225,11 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 }
 .chip:hover{border-color:var(--clay)}
 .chip.active{background:var(--plum-deep);color:#fff;border-color:var(--plum-deep)}
+.sortbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:24px;flex-wrap:wrap}
+.sortbar #resultCount{font-size:.9rem;color:var(--ink-mid)}
+.sortsel{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--plum);font-weight:600}
+.sortsel select{font-family:var(--sans);font-size:.9rem;padding:9px 14px;border-radius:24px;border:1px solid var(--line);background:var(--white);color:var(--plum);font-weight:600;cursor:pointer}
+.sortsel select:focus{outline:none;border-color:var(--clay)}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .card{
   background:var(--white);border-radius:var(--radius);overflow:hidden;
@@ -373,7 +378,7 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
 .socials a:hover{background:var(--clay);transform:translateY(-3px)}
 .socials svg{width:18px;height:18px}
 .foot-col h5{font-family:var(--sans);font-size:.92rem;font-weight:700;color:#fff;margin-bottom:18px}
-.foot-col a{display:block;font-size:.9rem;margin-bottom:11px;transition:color .25s}
+.foot-col a{display:block;font-size:.9rem;margin-bottom:11px;transition:color .25s;overflow-wrap:anywhere}
 .foot-col a:hover{color:var(--gold-light)}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem}
 
@@ -453,6 +458,8 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
   .steps{grid-template-columns:1fr}
   .field-row{grid-template-columns:1fr}
   .hero h1{font-size:2.3rem}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center}
 }
 
 /* Quick-view modal */
@@ -477,6 +484,12 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
 .qv-qty span{min-width:38px;font-size:1rem}
 .qv-perks{display:flex;flex-direction:column;gap:7px;margin-top:18px;font-size:.84rem;color:var(--ink-mid)}
 @media(max-width:640px){.qv{grid-template-columns:1fr;max-height:88vh}.qv-art svg{min-height:200px}}
+
+/* Back to top */
+.totop{position:fixed;bottom:24px;left:92px;z-index:85;width:48px;height:48px;border-radius:50%;background:var(--plum-deep);color:#fff;display:grid;place-items:center;box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .3s,transform .3s,background .25s}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--clay-deep)}
+.totop svg{width:22px;height:22px}
 
 /* Floating WhatsApp */
 .wa-fab{position:fixed;bottom:24px;left:24px;z-index:85;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 10px 26px rgba(37,211,102,.44);transition:transform .3s;animation:wapulse 2.6s ease-in-out infinite}
@@ -706,6 +719,19 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
       <button class="chip" data-filter="Toners">تونر</button>
       <button class="chip" data-filter="Masques">ماسكات</button>
       <button class="chip" data-filter="Solaire">حماية شمسية</button>
+    </div>
+    <div class="sortbar reveal">
+      <span id="resultCount"></span>
+      <label class="sortsel">
+        <span>ترتيب:</span>
+        <select id="sortSelect">
+          <option value="featured">المميّزة</option>
+          <option value="price-asc">السعر: من الأقل للأعلى</option>
+          <option value="price-desc">السعر: من الأعلى للأقل</option>
+          <option value="rating">الأعلى تقييمًا</option>
+          <option value="reviews">الأكثر مبيعًا</option>
+        </select>
+      </label>
     </div>
     <div class="grid" id="grid"></div>
   </div>
@@ -953,6 +979,9 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
   </div>
 </aside>
 
+<!-- Back to top -->
+<button class="totop" id="toTop" aria-label="العودة للأعلى"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 19V5M6 11l6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+
 <!-- Floating WhatsApp -->
 <a class="wa-fab" id="waFab" href="https://wa.me/212600000000" target="_blank" aria-label="تواصلي عبر واتساب">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2m0 2a8 8 0 0 1 0 16 8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4m4.3 10.6c-.2-.1-1.3-.7-1.5-.8s-.4-.1-.5.1l-.7.9c-.1.1-.2.2-.4.1a6.5 6.5 0 0 1-3.2-2.8c-.1-.2 0-.3.1-.4l.3-.4.2-.4v-.3l-.8-1.8c-.2-.4-.3-.4-.5-.4h-.4a1 1 0 0 0-.7.3A2.8 2.8 0 0 0 7 11.4a5 5 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.5.6 2 .6 2.8.5a2.4 2.4 0 0 0 1.5-1.1 2 2 0 0 0 .1-1.1z"/></svg>
@@ -1048,19 +1077,32 @@ const $ = (s)=>document.querySelector(s);
 const fmt = (n)=>n.toLocaleString('en-US')+' درهم';
 let currentFilter = 'all';
 let searchQuery = '';
+let currentSort = 'featured';
 let cart = [];
+let wish = [];
 try{ cart = JSON.parse(localStorage.getItem('elora_cart')||'[]') || []; }catch(e){ cart = []; }
+try{ wish = JSON.parse(localStorage.getItem('elora_wish')||'[]') || []; }catch(e){ wish = []; }
 function saveCart(){ try{ localStorage.setItem('elora_cart', JSON.stringify(cart)); }catch(e){} }
+function saveWish(){ try{ localStorage.setItem('elora_wish', JSON.stringify(wish)); }catch(e){} }
 
 // ---------- Render products ----------
 function renderProducts(){
   const grid = $('#grid');
   const q = searchQuery.trim().toLowerCase();
-  const list = PRODUCTS.filter(p=>{
+  let list = PRODUCTS.filter(p=>{
     const okCat = currentFilter==='all' || p.cat===currentFilter;
     const okQ = !q || p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
     return okCat && okQ;
   });
+  const sorters = {
+    'price-asc':(a,b)=>a.price-b.price,
+    'price-desc':(a,b)=>b.price-a.price,
+    'rating':(a,b)=>b.rating-a.rating,
+    'reviews':(a,b)=>b.reviews-a.reviews,
+  };
+  if(sorters[currentSort]) list = [...list].sort(sorters[currentSort]);
+  const rc = $('#resultCount');
+  if(rc) rc.textContent = `${list.length} منتج`;
   if(list.length===0){
     grid.innerHTML = `<div class="no-results"><b>لا توجد نتائج 🌿</b>لم نعثر على منتجات تطابق بحثكِ. جرّبي كلمة أخرى.</div>`;
     return;
@@ -1072,7 +1114,7 @@ function renderProducts(){
     return `<div class="card reveal" data-cat="${p.cat}">
       <div class="card-art" data-view="${p.id}" style="cursor:pointer">
         ${badgeHtml}
-        <button class="wish" data-wish="${p.id}" aria-label="المفضلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke-linejoin="round"/></svg></button>
+        <button class="wish${wish.includes(p.id)?' on':''}" data-wish="${p.id}" aria-label="المفضلة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke-linejoin="round"/></svg></button>
         ${productArt(p)}
       </div>
       <div class="card-body">
@@ -1201,8 +1243,14 @@ document.addEventListener('click',(e)=>{
     setTimeout(()=>{ add.classList.remove('added'); add.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>'; },1100);
     return;
   }
-  const wish = e.target.closest('[data-wish]');
-  if(wish){ wish.classList.toggle('on'); return; }
+  const wishBtn = e.target.closest('[data-wish]');
+  if(wishBtn){
+    const wid = +wishBtn.dataset.wish;
+    if(wish.includes(wid)){ wish = wish.filter(x=>x!==wid); wishBtn.classList.remove('on'); showToast('أُزيل من المفضلة'); }
+    else { wish.push(wid); wishBtn.classList.add('on'); showToast('أُضيف إلى المفضلة 🤍'); }
+    saveWish();
+    return;
+  }
   const view = e.target.closest('[data-view]');
   if(view){ openQuickView(+view.dataset.view); return; }
   const minus = e.target.closest('[data-minus]');
@@ -1291,6 +1339,9 @@ $('#searchInput').addEventListener('input',(e)=>{
   }, 180);
 });
 
+// Sort
+$('#sortSelect').addEventListener('change',(e)=>{ currentSort = e.target.value; renderProducts(); });
+
 // FAQ accordion
 $('#faqList').addEventListener('click',(e)=>{
   const q = e.target.closest('.faq-q'); if(!q) return;
@@ -1308,8 +1359,12 @@ $('#burger').addEventListener('click',()=>$('#mobileMenu').classList.add('open')
 $('#mobileClose').addEventListener('click',()=>$('#mobileMenu').classList.remove('open'));
 document.querySelectorAll('.mobile-menu a').forEach(a=>a.addEventListener('click',()=>$('#mobileMenu').classList.remove('open')));
 
-// Header shadow
-window.addEventListener('scroll',()=>{ document.querySelector('header').classList.toggle('scrolled', window.scrollY>10); });
+// Header shadow + back-to-top
+window.addEventListener('scroll',()=>{
+  document.querySelector('header').classList.toggle('scrolled', window.scrollY>10);
+  $('#toTop').classList.toggle('show', window.scrollY>600);
+});
+$('#toTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 // Reveal on scroll
 let io;
