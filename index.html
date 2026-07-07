@@ -115,6 +115,18 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 .cart-count.show{transform:scale(1)}
 .burger{display:none}
 
+/* ---------- Search bar ---------- */
+.searchbar{position:sticky;top:76px;z-index:55;background:rgba(253,248,244,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s ease}
+.searchbar.open{max-height:90px}
+.searchbar-inner{display:flex;align-items:center;gap:12px;padding:16px 26px}
+.searchbar-inner>svg{width:22px;height:22px;color:var(--clay-deep);flex:0 0 22px}
+.searchbar input{flex:1;font-family:var(--sans);font-size:1.05rem;padding:8px 0;border:none;background:none;color:var(--ink)}
+.searchbar input:focus{outline:none}
+.searchbar-close{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--plum);transition:background .25s}
+.searchbar-close:hover{background:var(--blush)}
+.no-results{grid-column:1/-1;text-align:center;padding:56px 20px;color:var(--ink-soft)}
+.no-results b{display:block;font-family:var(--disp);font-size:1.5rem;color:var(--plum-deep);margin-bottom:6px}
+
 /* ---------- Hero ---------- */
 .hero{position:relative;padding:70px 0 90px;overflow:hidden;background:var(--grad-soft)}
 .hero-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:0}
@@ -458,6 +470,11 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
 .qv-price{margin-bottom:20px}
 .qv-price b{font-family:var(--disp);font-size:1.9rem;color:var(--plum-deep)}
 .qv-price s{color:var(--ink-soft);margin-right:8px;font-size:1rem}
+.qv-qty-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.qv-qty-row>span{font-weight:700;color:var(--plum);font-size:.92rem}
+.qv-qty{margin-top:0}
+.qv-qty button{width:36px;height:36px;font-size:1.2rem}
+.qv-qty span{min-width:38px;font-size:1rem}
 .qv-perks{display:flex;flex-direction:column;gap:7px;margin-top:18px;font-size:.84rem;color:var(--ink-mid)}
 @media(max-width:640px){.qv{grid-template-columns:1fr;max-height:88vh}.qv-art svg{min-height:200px}}
 
@@ -512,7 +529,7 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
       <a href="#commander">اطلبي الآن</a>
     </nav>
     <div class="nav-actions">
-      <button class="icon-btn" aria-label="بحث">
+      <button class="icon-btn" id="searchBtn" aria-label="بحث">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
       </button>
       <button class="icon-btn" id="cartBtn" aria-label="السلة">
@@ -525,6 +542,15 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
     </div>
   </div>
 </header>
+
+<!-- Search bar -->
+<div class="searchbar" id="searchbar">
+  <div class="wrap searchbar-inner">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
+    <input type="search" id="searchInput" placeholder="ابحثي عن منتج أو علامة… (مثال: سيروم، COSRX)" autocomplete="off"/>
+    <button class="searchbar-close" id="searchClose" aria-label="إغلاق البحث"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg></button>
+  </div>
+</div>
 
 <!-- Mobile menu -->
 <div class="mobile-menu" id="mobileMenu">
@@ -943,6 +969,12 @@ footer{background:var(--plum-deep);color:rgba(251,241,234,.72);padding:64px 0 28
     <div class="stars" id="qvStars"></div>
     <p id="qvDesc"></p>
     <div class="qv-price" id="qvPrice"></div>
+    <div class="qv-qty-row">
+      <span>الكمية</span>
+      <div class="qty qv-qty">
+        <button id="qvMinus" aria-label="إنقاص">−</button><span id="qvQty">1</span><button id="qvPlus" aria-label="زيادة">+</button>
+      </div>
+    </div>
     <button class="btn btn-primary" id="qvAdd" style="width:100%;justify-content:center">أضيفي إلى السلة
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
     </button>
@@ -974,6 +1006,14 @@ const PRODUCTS = [
   {id:14, brand:"Medicube", name:"ماسك الكولاجين الليلي", cat:"Masques", price:169, old:0, rating:4.7, reviews:187, badge:"new", c1:"#E7D3E0", c2:"#B487A0"},
   {id:15, brand:"Some By Mi", name:"ماسك التفتيح باليوزو والنياسين", cat:"Masques", price:139, old:169, rating:4.6, reviews:121, badge:"promo", c1:"#F0D9B5", c2:"#C9A46A"},
   {id:16, brand:"Round Lab", name:"واقي شمس مرطّب بعصير البتولا", cat:"Solaire", price:145, old:0, rating:4.8, reviews:203, badge:"", c1:"#EAD7C4", c2:"#C48A6A"},
+  {id:17, brand:"COSRX", name:"كريم مخاط الحلزون الفائق 92%", cat:"Crèmes", price:195, old:0, rating:4.8, reviews:276, badge:"best", c1:"#E9C9B5", c2:"#C48A6A"},
+  {id:18, brand:"Anua", name:"غسول زيت عرق الذهب المنظّف", cat:"Nettoyants", price:159, old:189, rating:4.7, reviews:164, badge:"promo", c1:"#C7D6C4", c2:"#9DB09A"},
+  {id:19, brand:"Beauty of Joseon", name:"تونر الجينسنغ المرطّب", cat:"Toners", price:139, old:0, rating:4.8, reviews:189, badge:"", c1:"#F0D9B5", c2:"#C9A46A"},
+  {id:20, brand:"SKIN1004", name:"واقي الشمس بسنتيلا مدغشقر SPF50+", cat:"Solaire", price:155, old:0, rating:4.9, reviews:312, badge:"best", c1:"#D9E4D6", c2:"#9DB09A"},
+  {id:21, brand:"Torriden", name:"ماسك النوم المرطّب DIVE-IN", cat:"Masques", price:165, old:0, rating:4.7, reviews:134, badge:"new", c1:"#CFE0EC", c2:"#8FA9BE"},
+  {id:22, brand:"Medicube", name:"سيروم فيتامين C المركّز 20%", cat:"Sérums", price:209, old:249, rating:4.6, reviews:98, badge:"promo", c1:"#F5D6C6", c2:"#E0A088"},
+  {id:23, brand:"Some By Mi", name:"غسول الشاي الأخضر المهدّئ", cat:"Nettoyants", price:115, old:0, rating:4.7, reviews:142, badge:"", c1:"#D9E4D6", c2:"#9DB09A"},
+  {id:24, brand:"Round Lab", name:"كريم البتولا المرطّب المنعش", cat:"Crèmes", price:175, old:0, rating:4.8, reviews:167, badge:"new", c1:"#CDE1EA", c2:"#7FA6B8"},
 ];
 
 const DESC = {
@@ -1007,6 +1047,7 @@ const SHOP = { whatsapp: '212600000000', freeShip: 400, shipFee: 30 };
 const $ = (s)=>document.querySelector(s);
 const fmt = (n)=>n.toLocaleString('en-US')+' درهم';
 let currentFilter = 'all';
+let searchQuery = '';
 let cart = [];
 try{ cart = JSON.parse(localStorage.getItem('elora_cart')||'[]') || []; }catch(e){ cart = []; }
 function saveCart(){ try{ localStorage.setItem('elora_cart', JSON.stringify(cart)); }catch(e){} }
@@ -1014,7 +1055,16 @@ function saveCart(){ try{ localStorage.setItem('elora_cart', JSON.stringify(cart
 // ---------- Render products ----------
 function renderProducts(){
   const grid = $('#grid');
-  const list = PRODUCTS.filter(p=>currentFilter==='all'||p.cat===currentFilter);
+  const q = searchQuery.trim().toLowerCase();
+  const list = PRODUCTS.filter(p=>{
+    const okCat = currentFilter==='all' || p.cat===currentFilter;
+    const okQ = !q || p.name.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
+    return okCat && okQ;
+  });
+  if(list.length===0){
+    grid.innerHTML = `<div class="no-results"><b>لا توجد نتائج 🌿</b>لم نعثر على منتجات تطابق بحثكِ. جرّبي كلمة أخرى.</div>`;
+    return;
+  }
   grid.innerHTML = list.map(p=>{
     const badgeHtml = p.badge ? `<span class="badge ${p.badge}">${p.badge==='best'?'الأكثر مبيعًا':p.badge==='new'?'جديد':'تخفيض'}</span>`:'';
     const oldHtml = p.old ? `<s>${fmt(p.old)}</s>`:'';
@@ -1042,12 +1092,13 @@ function renderProducts(){
 }
 
 // ---------- Cart ----------
-function addToCart(id){
+function addToCart(id, n){
+  n = n || 1;
   const p = PRODUCTS.find(x=>x.id===id);
   const line = cart.find(x=>x.id===id);
-  if(line){ line.qty++; } else { cart.push({...p, qty:1}); }
+  if(line){ line.qty += n; } else { cart.push({...p, qty:n}); }
   updateCart();
-  showToast(`تمت إضافة ${p.name} ✓`);
+  showToast(`تمت إضافة ${p.name}${n>1?` ×${n}`:''} ✓`);
 }
 function changeQty(id,delta){
   const line = cart.find(x=>x.id===id);
@@ -1119,10 +1170,10 @@ function openDrawer(){ $('#drawer').classList.add('open'); $('#overlay').classLi
 function closeDrawer(){ $('#drawer').classList.remove('open'); $('#overlay').classList.remove('open'); }
 
 // ---------- Quick view ----------
-let qvId = null;
+let qvId = null, qvQty = 1;
 function openQuickView(id){
   const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
-  qvId = id;
+  qvId = id; qvQty = 1; $('#qvQty').textContent = '1';
   const fullStars = Math.round(p.rating);
   $('#qvArt').innerHTML = productArt(p);
   $('#qvBrand').textContent = p.brand;
@@ -1135,7 +1186,9 @@ function openQuickView(id){
 function closeQuickView(){ $('#qvModal').classList.remove('open'); $('#qvOverlay').classList.remove('open'); }
 $('#qvClose').addEventListener('click', closeQuickView);
 $('#qvOverlay').addEventListener('click', closeQuickView);
-$('#qvAdd').addEventListener('click',()=>{ if(qvId){ addToCart(qvId); closeQuickView(); openDrawer(); } });
+$('#qvMinus').addEventListener('click',()=>{ if(qvQty>1){ qvQty--; $('#qvQty').textContent=qvQty; } });
+$('#qvPlus').addEventListener('click',()=>{ qvQty++; $('#qvQty').textContent=qvQty; });
+$('#qvAdd').addEventListener('click',()=>{ if(qvId){ addToCart(qvId, qvQty); closeQuickView(); openDrawer(); } });
 document.addEventListener('keydown',(e)=>{ if(e.key==='Escape'){ closeQuickView(); closeDrawer(); } });
 
 // ---------- Events ----------
@@ -1221,6 +1274,22 @@ $('#orderForm').addEventListener('submit',(e)=>{
 
 // Newsletter
 $('#newsForm').addEventListener('submit',(e)=>{ e.preventDefault(); showToast('مرحبًا بكِ في نادي إيلورا 🤍 خصم -15%!'); e.target.reset(); });
+
+// Search
+function openSearch(){ $('#searchbar').classList.add('open'); setTimeout(()=>$('#searchInput').focus(),120); }
+function closeSearch(){ $('#searchbar').classList.remove('open'); $('#searchInput').value=''; searchQuery=''; renderProducts(); }
+$('#searchBtn').addEventListener('click',()=>{ $('#searchbar').classList.contains('open') ? closeSearch() : openSearch(); });
+$('#searchClose').addEventListener('click', closeSearch);
+let searchTimer;
+$('#searchInput').addEventListener('input',(e)=>{
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(()=>{
+    searchQuery = e.target.value;
+    if(searchQuery.trim()){ currentFilter='all'; document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active', c.dataset.filter==='all')); }
+    renderProducts();
+    document.getElementById('boutique').scrollIntoView({behavior:'smooth'});
+  }, 180);
+});
 
 // FAQ accordion
 $('#faqList').addEventListener('click',(e)=>{
