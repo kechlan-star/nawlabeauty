@@ -152,7 +152,10 @@ html[dir="rtl"] .cart-drawer{transform:translateX(-110%)}
 .pack-imgs.trio img{max-width:29%;height:112px}
 .pack-imgs.trio .pack-plus{font-size:1.1rem}
 .pack-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
-.pack-items{font-size:0.72rem;color:var(--text-light);margin-bottom:1rem;line-height:1.5;flex:1}
+.pack-info{display:flex;flex-direction:column;flex:1}
+.pack-items{font-size:0.72rem;color:var(--text-light);margin-bottom:0.8rem;line-height:1.5}
+.pack-review{font-size:0.72rem;color:var(--text-mid);line-height:1.7;margin-bottom:1rem;background:var(--soft-white);border-radius:var(--r-sm);padding:0.7rem 0.85rem;border-inline-start:2px solid var(--gold);flex:1}
+.pack-review .pack-rate{font-family:var(--serif);font-weight:600;color:var(--rose-dark)}
 .pack-foot{display:flex;align-items:center;justify-content:space-between;gap:0.6rem;margin-top:auto}
 .pack-price{display:flex;flex-direction:column;line-height:1.15}
 .pack-old{font-size:0.7rem;color:var(--text-light);text-decoration:line-through}
@@ -888,6 +891,7 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
       <div class="pack-info">
         <div class="pack-name" data-i18n="pack4_name">Radiance Glow Trio</div>
         <div class="pack-items" data-i18n="pack4_items">SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide</div>
+        <div class="pack-review" data-i18n="pack4_desc">If your goal is to fade acne marks, even out skin tone and minimize pores, this trio is an excellent choice to start with.</div>
         <div class="pack-foot">
           <div class="pack-price"><span class="pack-old">830 DHS</span><span class="pack-new">735 DHS</span></div>
           <button class="pack-buy" onclick="addToCart('Pack — Radiance Glow Trio (SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide)','735');toggleCart()" data-i18n="pack_add">Add Pack</button>
@@ -895,50 +899,20 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
       </div>
     </div>
     <div class="pack-card">
-      <div class="pack-save"><span data-i18n="pack_save">Save</span> 80 DHS</div>
-      <div class="pack-imgs">
-        <img data-prod="Celimax Retinal Shot Tightening Booster" alt="" loading="lazy"/>
-        <span class="pack-plus">+</span>
-        <img data-prod="Eqqualberry Bakuchiol Plumping Serum" alt="" loading="lazy"/>
-      </div>
-      <div class="pack-info">
-        <div class="pack-name" data-i18n="pack1_name">Anti-Aging Duo</div>
-        <div class="pack-items" data-i18n="pack1_items">Celimax Retinal Booster + Eqqualberry Bakuchiol</div>
-        <div class="pack-foot">
-          <div class="pack-price"><span class="pack-old">570 DHS</span><span class="pack-new">490 DHS</span></div>
-          <button class="pack-buy" onclick="addToCart('Pack — Anti-Aging Duo (Celimax Retinal Booster + Eqqualberry Bakuchiol)','490');toggleCart()" data-i18n="pack_add">Add Pack</button>
-        </div>
-      </div>
-    </div>
-    <div class="pack-card">
-      <div class="pack-save"><span data-i18n="pack_save">Save</span> 90 DHS</div>
-      <div class="pack-imgs">
+      <div class="pack-imgs trio">
         <img data-prod="Dr.Althea 345 Relief Cream" alt="" loading="lazy"/>
         <span class="pack-plus">+</span>
-        <img data-prod="Dr.Althea 345 Relief Cream" alt="" loading="lazy"/>
-      </div>
-      <div class="pack-info">
-        <div class="pack-name" data-i18n="pack2_name">Dr.Althea 345 Duo</div>
-        <div class="pack-items" data-i18n="pack2_items">2× Dr.Althea 345 Relief Cream</div>
-        <div class="pack-foot">
-          <div class="pack-price"><span class="pack-old">580 DHS</span><span class="pack-new">490 DHS</span></div>
-          <button class="pack-buy" onclick="addToCart('Pack — Dr.Althea 345 Duo (2x 345 Relief Cream)','490');toggleCart()" data-i18n="pack_add">Add Pack</button>
-        </div>
-      </div>
-    </div>
-    <div class="pack-card">
-      <div class="pack-save"><span data-i18n="pack_save">Save</span> 80 DHS</div>
-      <div class="pack-imgs">
-        <img data-prod="Anua Niacinamide 10% + TXA 4% Serum" alt="" loading="lazy"/>
+        <img data-prod="Anua Heartleaf Pore Deep Cleansing Foam" alt="" loading="lazy"/>
         <span class="pack-plus">+</span>
-        <img data-prod="Dr.Althea Vitamin C Boosting Serum" alt="" loading="lazy"/>
+        <img data-prod="Medicube PDRN Pink Peptide Serum" alt="" loading="lazy"/>
       </div>
       <div class="pack-info">
-        <div class="pack-name" data-i18n="pack3_name">Glow &amp; Brighten</div>
-        <div class="pack-items" data-i18n="pack3_items">Anua Niacinamide + Dr.Althea Vitamin C</div>
+        <div class="pack-name" data-i18n="pack5_name">Repair & Firm Trio</div>
+        <div class="pack-items" data-i18n="pack5_items">Dr.Althea 345 + Anua Heartleaf Foam + Medicube PDRN Serum</div>
+        <div class="pack-review" data-i18n="pack5_desc"><span class="pack-rate">Overall rating: 9.8/10.</span> If your skin is oily or combination and your goal is to fade acne marks, even out skin tone, get a healthy glow and keep skin healthy — this is a very balanced and powerful routine.</div>
         <div class="pack-foot">
-          <div class="pack-price"><span class="pack-old">550 DHS</span><span class="pack-new">470 DHS</span></div>
-          <button class="pack-buy" onclick="addToCart('Pack — Glow &amp; Brighten (Anua Niacinamide + Dr.Althea Vitamin C)','470');toggleCart()" data-i18n="pack_add">Add Pack</button>
+          <div class="pack-price"><span class="pack-new">790 DHS</span></div>
+          <button class="pack-buy" onclick="addToCart('Pack — Repair & Firm Trio (Dr.Althea 345 + Anua Heartleaf Foam + Medicube PDRN Serum)','790');toggleCart()" data-i18n="pack_add">Add Pack</button>
         </div>
       </div>
     </div>
@@ -1887,6 +1861,9 @@ const translations = {
     pack2_name:"Dr.Althea 345 Duo", pack2_items:"2× Dr.Althea 345 Relief Cream",
     pack3_name:"Glow & Brighten", pack3_items:"Anua Niacinamide + Dr.Althea Vitamin C",
     pack4_name:"Radiance Glow Trio", pack4_items:"SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide",
+    pack4_desc:"If your goal is to fade acne marks, even out skin tone and minimize pores, this trio is an excellent choice to start with.",
+    pack5_name:"Repair & Firm Trio", pack5_items:"Dr.Althea 345 + Anua Heartleaf Foam + Medicube PDRN Serum",
+    pack5_desc:'<span class="pack-rate">Overall rating: 9.8/10.</span> If your skin is oily or combination and your goal is to fade acne marks, even out skin tone, get a healthy glow and keep skin healthy — this is a very balanced and powerful routine.',
     search_ph:"Search products...", search_no_results:"No products found.",
     cart_title:"Your Cart", cart_total:"Total", cart_order:"Order on WhatsApp", cart_clear:"Clear cart", cart_empty:"Your cart is empty", cart_wa_header:"Hello Nawla Beauty! I would like to order:",
     ts_receipt_t:"Receipt with order", ts_receipt_s:"Every order tracked",
@@ -1944,6 +1921,9 @@ const translations = {
     pack2_name:"Duo Dr.Althea 345", pack2_items:"2× Crème Apaisante Dr.Althea 345",
     pack3_name:"Éclat & Uniformité", pack3_items:"Niacinamide Anua + Vitamine C Dr.Althea",
     pack4_name:"Trio Éclat", pack4_items:"Mousse SKIN1004 + Crème Solaire Medicube + Niacinamide Anua",
+    pack4_desc:"Si votre objectif est d'estomper les marques d'acné, unifier le teint et resserrer les pores, ce trio est un excellent choix pour commencer.",
+    pack5_name:"Trio Réparation & Fermeté", pack5_items:"Dr.Althea 345 + Mousse Heartleaf Anua + Sérum PDRN Medicube",
+    pack5_desc:'<span class="pack-rate">Note globale : 9,8/10.</span> Si votre peau est grasse ou mixte et que votre objectif est d\'estomper les marques d\'acné, unifier le teint, obtenir un glow sain et garder une peau saine — c\'est une routine très équilibrée et puissante.',
     search_ph:"Rechercher des produits...", search_no_results:"Aucun produit trouvé.",
     cart_title:"Votre Panier", cart_total:"Total", cart_order:"Commander sur WhatsApp", cart_clear:"Vider le panier", cart_empty:"Votre panier est vide", cart_wa_header:"Bonjour Nawla Beauty ! Je souhaite commander :",
     ts_receipt_t:"Reçu avec la commande", ts_receipt_s:"Chaque commande suivie",
@@ -2001,6 +1981,9 @@ const translations = {
     pack2_name:"باقة درع ألثيا 345", pack2_items:"كريم 345 المُهدّئ × 2",
     pack3_name:"باقة الإشراقة والتفتيح", pack3_items:"نياسيناميد أنوا + فيتامين C درع ألثيا",
     pack4_name:"ثلاثية الإشراقة", pack4_items:"غسول SKIN1004 + واقي شمس ميديكيوب + نياسيناميد أنوا",
+    pack4_desc:"إذا كان الهدف ديالك هو إزالة آثار الحبوب، توحيد لون البشرة، وتقليل المسام، فهذا الثلاثي يعتبر اختيارًا ممتازًا كبداية.",
+    pack5_name:"ثلاثية الترميم والشدّ", pack5_items:"درع ألثيا 345 + غسول هارتليف أنوا + سيروم PDRN ميديكيوب",
+    pack5_desc:'<span class="pack-rate">التقييم العام: 9.8/10.</span> إذا كانت بشرتك دهنية أو مختلطة وهدفك هو إزالة آثار الحبوب، توحيد لون البشرة، الحصول على Glow صحي، والمحافظة على صحة البشرة، فهذا روتين متوازن وقوي جدًا.',
     search_ph:"ابحثي عن منتج...", search_no_results:"لم يتم العثور على منتجات.",
     cart_title:"سلّتكِ", cart_total:"الإجمالي", cart_order:"اطلبي عبر واتساب", cart_clear:"إفراغ السلّة", cart_empty:"سلّتكِ فارغة", cart_wa_header:"مرحباً نولا بيوتي! أودّ طلب:",
     ts_receipt_t:"وصل مع الطلبية", ts_receipt_s:"تتبع كل طلب",
