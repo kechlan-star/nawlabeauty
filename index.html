@@ -149,6 +149,8 @@ html[dir="rtl"] .cart-drawer{transform:translateX(-110%)}
 .pack-imgs{display:flex;align-items:center;justify-content:center;gap:0.5rem;height:155px;background:radial-gradient(circle at 50% 40%,#fff,var(--blush));border-radius:var(--r-md);margin-bottom:1.1rem}
 .pack-imgs img{height:135px;width:auto;max-width:42%;object-fit:contain;border-radius:8px;filter:drop-shadow(0 8px 18px rgba(196,91,122,0.22))}
 .pack-plus{font-family:var(--serif);font-size:1.5rem;color:var(--rose-deep);flex:0 0 auto}
+.pack-imgs.trio img{max-width:29%;height:112px}
+.pack-imgs.trio .pack-plus{font-size:1.1rem}
 .pack-name{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--text);margin-bottom:0.3rem}
 .pack-items{font-size:0.72rem;color:var(--text-light);margin-bottom:1rem;line-height:1.5;flex:1}
 .pack-foot{display:flex;align-items:center;justify-content:space-between;gap:0.6rem;margin-top:auto}
@@ -874,6 +876,24 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
   <div class="eyebrow" data-i18n="packs_eyebrow">Special Offers</div>
   <h2 class="sec-title"><span data-i18n="packs_title_1">Curated </span><em data-i18n="packs_title_em">bundles</em><span data-i18n="packs_title_2"> for less</span></h2>
   <div class="packs-grid">
+    <div class="pack-card">
+      <div class="pack-save"><span data-i18n="pack_save">Save</span> 95 DHS</div>
+      <div class="pack-imgs trio">
+        <img data-prod="SKIN1004 Madagascar Centella Ampoule Foam" alt="" loading="lazy"/>
+        <span class="pack-plus">+</span>
+        <img data-prod="Medicube Collagen Firming Sun Cream" alt="" loading="lazy"/>
+        <span class="pack-plus">+</span>
+        <img data-prod="Anua Niacinamide 10% + TXA 4% Serum" alt="" loading="lazy"/>
+      </div>
+      <div class="pack-info">
+        <div class="pack-name" data-i18n="pack4_name">Radiance Glow Trio</div>
+        <div class="pack-items" data-i18n="pack4_items">SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide</div>
+        <div class="pack-foot">
+          <div class="pack-price"><span class="pack-old">830 DHS</span><span class="pack-new">735 DHS</span></div>
+          <button class="pack-buy" onclick="addToCart('Pack — Radiance Glow Trio (SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide)','735');toggleCart()" data-i18n="pack_add">Add Pack</button>
+        </div>
+      </div>
+    </div>
     <div class="pack-card">
       <div class="pack-save"><span data-i18n="pack_save">Save</span> 80 DHS</div>
       <div class="pack-imgs">
@@ -1866,6 +1886,7 @@ const translations = {
     pack1_name:"Anti-Aging Duo", pack1_items:"Celimax Retinal Booster + Eqqualberry Bakuchiol",
     pack2_name:"Dr.Althea 345 Duo", pack2_items:"2× Dr.Althea 345 Relief Cream",
     pack3_name:"Glow & Brighten", pack3_items:"Anua Niacinamide + Dr.Althea Vitamin C",
+    pack4_name:"Radiance Glow Trio", pack4_items:"SKIN1004 Foam + Medicube Sun Cream + Anua Niacinamide",
     search_ph:"Search products...", search_no_results:"No products found.",
     cart_title:"Your Cart", cart_total:"Total", cart_order:"Order on WhatsApp", cart_clear:"Clear cart", cart_empty:"Your cart is empty", cart_wa_header:"Hello Nawla Beauty! I would like to order:",
     ts_receipt_t:"Receipt with order", ts_receipt_s:"Every order tracked",
@@ -1922,6 +1943,7 @@ const translations = {
     pack1_name:"Duo Anti-Âge", pack1_items:"Booster Rétinal Celimax + Bakuchiol Eqqualberry",
     pack2_name:"Duo Dr.Althea 345", pack2_items:"2× Crème Apaisante Dr.Althea 345",
     pack3_name:"Éclat & Uniformité", pack3_items:"Niacinamide Anua + Vitamine C Dr.Althea",
+    pack4_name:"Trio Éclat", pack4_items:"Mousse SKIN1004 + Crème Solaire Medicube + Niacinamide Anua",
     search_ph:"Rechercher des produits...", search_no_results:"Aucun produit trouvé.",
     cart_title:"Votre Panier", cart_total:"Total", cart_order:"Commander sur WhatsApp", cart_clear:"Vider le panier", cart_empty:"Votre panier est vide", cart_wa_header:"Bonjour Nawla Beauty ! Je souhaite commander :",
     ts_receipt_t:"Reçu avec la commande", ts_receipt_s:"Chaque commande suivie",
@@ -1978,6 +2000,7 @@ const translations = {
     pack1_name:"باقة مكافحة الشيخوخة", pack1_items:"بوستر الريتينال سيليماكس + باكوتشيول إيكوالبيري",
     pack2_name:"باقة درع ألثيا 345", pack2_items:"كريم 345 المُهدّئ × 2",
     pack3_name:"باقة الإشراقة والتفتيح", pack3_items:"نياسيناميد أنوا + فيتامين C درع ألثيا",
+    pack4_name:"ثلاثية الإشراقة", pack4_items:"غسول SKIN1004 + واقي شمس ميديكيوب + نياسيناميد أنوا",
     search_ph:"ابحثي عن منتج...", search_no_results:"لم يتم العثور على منتجات.",
     cart_title:"سلّتكِ", cart_total:"الإجمالي", cart_order:"اطلبي عبر واتساب", cart_clear:"إفراغ السلّة", cart_empty:"سلّتكِ فارغة", cart_wa_header:"مرحباً نولا بيوتي! أودّ طلب:",
     ts_receipt_t:"وصل مع الطلبية", ts_receipt_s:"تتبع كل طلب",
