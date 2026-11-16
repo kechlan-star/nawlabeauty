@@ -1,0 +1,7 @@
+# Local-only files: not part of the published site
+.claude/
+index.backup.html
+catalogue-prix.html
+prix-produits.csv
+prix-produits.xlsx
+*.lnk
