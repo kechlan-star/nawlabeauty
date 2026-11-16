@@ -746,6 +746,10 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
 /* ══ UX pass: readable text, clearer buy buttons, category chips, mobile menu, order recap ══ */
 /* Savings badge sits on the card edge so it never covers the pack poster */
 .pack-save{top:-11px;inset-inline-end:18px;font-size:0.7rem}
+/* Pack thumbnails: equal squares that shrink to fit the box instead of spilling out of it */
+.pack-imgs:not(.promo){padding:0 1rem;gap:0.5rem}
+.pack-imgs:not(.promo) img,.pack-imgs.trio img{flex:0 1 112px;width:112px;min-width:0;max-width:none;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;filter:none;box-shadow:0 6px 16px rgba(196,91,122,0.18)}
+.pack-imgs .pack-plus{flex:0 0 auto}
 /* Buy buttons use the deepest rose: they stand out from the pink UI and white text passes 4.5:1 */
 .prod-buy,.pack-buy{background:var(--rose-deeper);font-size:0.7rem;box-shadow:0 4px 14px rgba(168,69,106,0.3)}
 .prod-buy:hover,.pack-buy:hover{background:#8C3557}
