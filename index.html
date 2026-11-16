@@ -750,6 +750,15 @@ html.anim-settled .hero-visual{animation:none!important;opacity:1!important;tran
 .pack-imgs:not(.promo){padding:0 1rem;gap:0.5rem}
 .pack-imgs:not(.promo) img,.pack-imgs.trio img{flex:0 1 112px;width:112px;min-width:0;max-width:none;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:12px;filter:none;box-shadow:0 6px 16px rgba(196,91,122,0.18)}
 .pack-imgs .pack-plus{flex:0 0 auto}
+/* Every pack image box has the same shape, and posters are shown whole (they carry text) instead of cropped */
+.pack-imgs,.pack-imgs.promo{width:100%;height:auto;aspect-ratio:1/1;max-height:320px}
+.pack-imgs.promo img{width:auto;max-width:100%;height:100%;object-fit:contain;border-radius:12px}
+.pack-imgs:not(.promo) img,.pack-imgs.trio img{flex-basis:140px;width:140px}
+/* One column: nothing to line up with, so thumbnail boxes go back to a compact height */
+@media(max-width:900px){
+  .pack-imgs:not(.promo){aspect-ratio:auto;height:150px}
+  .pack-imgs:not(.promo) img,.pack-imgs.trio img{flex-basis:118px;width:118px}
+}
 /* Buy buttons use the deepest rose: they stand out from the pink UI and white text passes 4.5:1 */
 .prod-buy,.pack-buy{background:var(--rose-deeper);font-size:0.7rem;box-shadow:0 4px 14px rgba(168,69,106,0.3)}
 .prod-buy:hover,.pack-buy:hover{background:#8C3557}
